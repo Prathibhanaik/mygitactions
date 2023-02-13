@@ -1,6 +1,6 @@
 name: Batch File Runner
 
-on:[push]
+on: [push]
 
 jobs:
   run-batch-file:
