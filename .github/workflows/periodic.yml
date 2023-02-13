@@ -1,0 +1,16 @@
+name: Run batch file
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'
+
+jobs:
+  run_batch:
+    runs-on: windows-latest
+
+    steps:
+    - name: Run batch file
+      env:
+        BATCH_FILE: C:\PRATHIBHA\yaml\Box
+      run: |
+        cmd /c "$env:BATCH_FILE"
