@@ -1,23 +1,13 @@
-name: Run Batch Script
+name: Example workflow
 
-on: [push]
+on: push
 
 jobs:
-  run-batch-script:
+  build:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up environment
+    - name: Run batch file
       run: |
-        cd c:\PRATHIBHA\yaml
-
-    - name: Run batch script
-      run: |
-        Box.bat
-
-    - name: Echo result
-      run: |
-        echo The script has run successfully.
+        cd C:\PRATHIBHA\yaml
+        call Box.bat
