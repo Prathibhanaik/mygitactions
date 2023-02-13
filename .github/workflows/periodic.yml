@@ -1,18 +1,16 @@
-name: Run batch file
+name: Batch File Runner
 
-on: [push]
+on:[push]
 
 jobs:
-  run_batch:
+  run-batch-file:
     runs-on: windows-latest
 
     steps:
-    - name: Run batch file
-      env:
-        BATCH_FILE: C:\PRATHIBHA\yaml\Box.bat
-      run: |
-        cmd /c "$env:BATCH_FILE"
-        
-    - name: Print BATCH_FILE
-      run: |
-        echo "$env:BATCH_FILE"
+    - name: Run Batch File
+      run: echo %cd%
+      shell: cmd
+
+    - name: Print Local Machine Path
+      run: echo %cd%
+      shell: cmd
