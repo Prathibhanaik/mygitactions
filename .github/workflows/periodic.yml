@@ -1,8 +1,6 @@
 name: Run batch file
 
-on:
-  schedule:
-    - cron: '*/1 * * * *'
+on: [push]
 
 jobs:
   run_batch:
