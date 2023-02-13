@@ -1,16 +1,23 @@
-name: Batch File Runner
+name: Run Batch Script
 
 on: [push]
 
 jobs:
-  run-batch-file:
+  run-batch-script:
     runs-on: windows-latest
 
     steps:
-    - name: Run Batch File
-      run: echo %cd%
-      shell: cmd
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    - name: Print Local Machine Path
-      run: echo %cd%
-      shell: cmd
+    - name: Set up environment
+      run: |
+        cd c:\PRATHIBHA\yaml
+
+    - name: Run batch script
+      run: |
+        Box.bat
+
+    - name: Echo result
+      run: |
+        echo The script has run successfully.
