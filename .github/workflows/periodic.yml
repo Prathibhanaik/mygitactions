@@ -10,6 +10,9 @@ jobs:
     - name: Run batch file
       env:
         BATCH_FILE: C:\PRATHIBHA\yaml\Box.bat
+    - name: Print BATCH_FILE
+      run: |
+        echo "$env:BATCH_FILE"
       run: |
         cmd /c "$env:BATCH_FILE"
         
