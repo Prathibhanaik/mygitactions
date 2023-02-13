@@ -1,0 +1,8 @@
+name: Batch Files Execution on: [push] jobs:
+  build:
+    runs-on: windows-latest     steps:
+    - uses: actions/checkout@v1
+    - name: Run batch file 1
+      run: .\Box.bat
+    - name: Run batch file 2
+      run: .\allclr.bat
