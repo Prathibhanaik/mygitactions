@@ -9,6 +9,6 @@ jobs:
     steps:
     - name: Run batch file
       env:
-        BATCH_FILE: C:\PRATHIBHA\yaml\Box
+        BATCH_FILE: C:\PRATHIBHA\yaml\Box.bat
       run: |
         cmd /c "$env:BATCH_FILE"
