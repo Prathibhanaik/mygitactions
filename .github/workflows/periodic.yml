@@ -1,13 +1,16 @@
-name: Example workflow
+name: Batch Files Execution periodic
 
-on: push
+on:
+    schedule:
+      - cron: '*/1 * * * *'
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - name: Run batch file
-      run: |
-        cd c:\PRATHIBHA\yaml
-        call Box.bat
+    - uses: actions/checkout@v1
+    - name: Run batch file 1
+      run: .\Box.bat
+    - name: Run batch file 2
+      run: .\allclr.bat
