@@ -1,9 +1,12 @@
-name: My Workflow
-on: [push]
-jobs:
-  build:
-    runs-on: windows-latest
-    steps:
-    - name: List files
-      run: |
-        dir
+- name: Upload file
+  uses: actions/upload-artifact@v2
+  with:
+    name: my-artifact
+    path: ${{ github.workspace }}
+    # Use a pipe-separated list of file paths to create a dropdown
+    # The value of the selected option will be passed as the input
+    # of the next step
+    if: github.event_name == 'push'
+    continue-on-error: true
+    env:
+      FOO: bar
