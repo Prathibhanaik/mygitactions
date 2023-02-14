@@ -1,25 +1,9 @@
-name: Select and Run Batch File
-
-on:
-  workflow_dispatch:
-    inputs:
-      batchfile:
-        description: 'Select a batch file to run'
-        required: true
-        type: file
-        # Optional: limit the file types that can be selected
-        # contentTypes:
-        #   - application/x-bat
-
+name: My Workflow
+on: [push]
 jobs:
-  run-batch-file:
+  build:
     runs-on: windows-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run batch file
-        shell: cmd
-        run: '${{ env.BATCHFILE }}'
-        env:
-          BATCHFILE: ${{ github.event.inputs.batchfile.path }}
+    - name: List files
+      run: |
+        dir
