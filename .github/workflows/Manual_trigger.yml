@@ -1,12 +1,28 @@
-- name: Upload file
-  uses: actions/upload-artifact@v2
-  with:
-    name: my-artifact
-    path: ${{ github.workspace }}
-    # Use a pipe-separated list of file paths to create a dropdown
-    # The value of the selected option will be passed as the input
-    # of the next step
-    if: github.event_name == 'push'
-    continue-on-error: true
-    env:
-      FOO: bar
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Choose a file
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const { data: files } = await octokit.rest.repos.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: '.'
+            });
+            const fileNames = files.map(file => file.name);
+            return {
+              inputs: {
+                fileName: {
+                  description: 'Select a file to use',
+                  required: true,
+                  type: 'select',
+                  options: fileNames
+                }
+              }
+            };
+          ad: true
+      - name: Use the chosen file
+        run: |
+          echo "The chosen file is ${{ github.event.inputs.fileName }}"
