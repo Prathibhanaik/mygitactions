@@ -1,15 +1,16 @@
-name: Run Batch File Every Minute 
+name: Run Batch File Every 5 Minute 
 
 on:
   schedule:
-    - cron: "*/1 * * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
   run-batch-file:
     runs-on: windows-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Run batch file
-      run: .\Box.bat
+      - name: Run batch file
+        run: .\Box.bat
+
