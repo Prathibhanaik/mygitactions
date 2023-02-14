@@ -2,7 +2,7 @@ name: Run Batch File Every Minute
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "*/1 * * * *"
 
 jobs:
   run-batch-file:
