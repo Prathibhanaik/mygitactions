@@ -1,16 +1,15 @@
-name: Batch Files Execution periodic
+name: Run Batch File Every Minute
 
 on:
-    schedule:
-      - cron: '*/1 * * * *'
+  schedule:
+    - cron: "*/1 * * * *"
 
 jobs:
-  build:
+  run-batch-file:
     runs-on: windows-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Run batch file 1
-      run: .\Box.bat
-    - name: Run batch file 2
-      run: .\allclr.bat
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run batch file
+      run: Box.bat
