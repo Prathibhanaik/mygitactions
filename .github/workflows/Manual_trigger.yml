@@ -1,0 +1,14 @@
+name: Manual Batch File Trigger
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-batch-file:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run batch file
+        run: .\Box.bat
