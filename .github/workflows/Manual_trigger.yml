@@ -4,11 +4,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  run_batch_file:
+  run-file:
     runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: Run batch file
-        run: .\allclr.bat
+      - name: Prompt user to select file
+        uses: tyler-johnson/file-selector-action@v1.1.2
+        id: file
+        with:
+          prompt: 'Please select the batch file to run'
+          extension: '.bat'
+      - name: Run selected file
+        run: |
+          # Use the selected file path from the previous step
+          ${{ steps.file.outputs.selected_file }}
+
