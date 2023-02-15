@@ -2,21 +2,25 @@ name: My user trigger
 
 on:
   workflow_dispatch:
+    inputs:
+      name:
+        type: choice
+        description: Who to greet
+        options: 
+        - monalisa
+        - cschleiden
+      message:
+        required: true
+      use-emoji:
+        type: boolean
+        description: Include 🎉🤣 emojis
+      environment:
+        type: environment
 
 jobs:
-  run-file:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Prompt user to select file
-        uses: tyler-johnson/file-selector-action@v1.1.2
-        id: file
-        with:
-          prompt: 'Please select the batch file to run'
-          extension: '.bat'
-      - name: Run selected file
-        run: |
-          # Use the selected file path from the previous step
-          ${{ steps.file.outputs.selected_file }}
+  greet:
+    runs-on: ubuntu-latest
 
+    steps:
+    - name: Send greeting
+      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
