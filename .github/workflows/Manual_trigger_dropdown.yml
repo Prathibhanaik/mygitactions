@@ -1,0 +1,21 @@
+name: Manual_trigger_dropdown
+
+on:
+  workflow_dispatch:
+    inputs:
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - .\Box.bat
+        - .\allclr.bat
+        
+jobs:
+  my_job:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run file
+        run:  ${{ github.workspace }}/${{ inputs.choice }}
+        # The input parameter 'choice' is used to specify the file to run
