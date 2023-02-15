@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Run GUI
         run: |
-          $yaml = Get-Content -Path .\workflow.yaml -Raw
+          $yaml = Get-Content -Path .\Manual_trigger.yml -Raw
           $workflow = ConvertFrom-Yaml -InputObject $yaml
           $jobNames = $workflow.jobs.psobject.Properties.Name
           $selectedJob = $jobNames | Out-GridView -Title "Select a job to run" -PassThru
