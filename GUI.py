@@ -1,24 +1,15 @@
-import PySimpleGUI as sg
+import tkinter as tk
 
-# Define the layout of the GUI
-layout = [
-    [sg.Text('Enter your name:'), sg.InputText()],
-    [sg.Button('Submit'), sg.Button('Cancel')]
-]
+def button_click():
+    label.config(text="Button clicked")
 
-# Create the GUI window
-window = sg.Window('GitHub Action', layout)
+root = tk.Tk()
+root.title("GitHub Actions GUI")
 
-# Run the event loop
-while True:
-    event, values = window.read()
-    if event in (None, 'Cancel'):
-        # Exit the event loop if the user closes the window or clicks the Cancel button
-        break
-    elif event == 'Submit':
-        # Perform some action based on the user's input
-        name = values[0]
-        print(f'Hello, {name}!')
+label = tk.Label(root, text="Welcome to GitHub Actions")
+label.pack(pady=10)
 
-# Close the window
-window.close()
+button = tk.Button(root, text="Click me", command=button_click)
+button.pack(pady=10)
+
+root.mainloop()
