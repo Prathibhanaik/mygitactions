@@ -6,15 +6,17 @@ on:
       file:
         description: 'File to run'
         required: true
-
+        default: '.\Box.bat'
+        
 jobs:
-  run-file:
-    runs-on: ubuntu-latest
+  my_job:
+    runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run file
-        run: |
-          file_to_run=${{ github.event.inputs.file }}
-          # Run the file using the appropriate command
-          echo "Running" $file_to_run
+        run:  ${{ github.workspace }}/${{ inputs.file }}
+        # The input parameter 'file' is used to specify the file to run
+
+
+
