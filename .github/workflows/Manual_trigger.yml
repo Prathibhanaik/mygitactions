@@ -1,26 +1,22 @@
 name: My user trigger
 
-on:
-  workflow_dispatch:
-    inputs:
-      name:
-        type: choice
-        description: Who to greet
-        options: 
-        - monalisa
-        - cschleiden
-      message:
-        required: true
-      use-emoji:
-        type: boolean
-        description: Include 🎉🤣 emojis
-      environment:
-        type: environment
+"on":
+    workflow_dispatch:
+        inputs:  
+            device:
+                description: '[1] iPhone, [2] Samsung Galaxy'
+                required: true
+                default: '1'
 
-jobs:
-  greet:
-    runs-on: ubuntu-latest
-
+jobs
+    test:
     steps:
-    - name: Send greeting
-      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+        - name: Set device
+          id: setDevice
+          run: |
+            if [[ "${{ github.event.inputs.device }}" == "1" ]]; then
+                echo "::set-output name=deviceString::iPhone"
+            fi
+            if [[ "${{ github.event.inputs.device }}" == "2" ]]; then
+                echo "::set-output name=deviceString::Samsung Galaxy"
+            fi
