@@ -3,19 +3,9 @@ name: My user trigger
 on: [push]
 
 jobs:
-  my-job:
+  list_files:
     runs-on: windows-latest
     steps:
       - name: List files
         run: |
-          echo "::set-output name=files::$(dir ./)"
-      - name: Select file
-        id: select-file
-        run: |
-          $files = "${{ steps.list-files.outputs.files }}".Split("`n")
-          $selected = $files | Out-GridView -OutputMode Single -Title "Select a file"
-          echo "::set-output name=selected-file::$selected"
-      - name: Use selected file
-        run: |
-          $selected = "${{ steps.select-file.outputs.selected-file }}"
-          echo "Selected file: $selected"
+          dir
