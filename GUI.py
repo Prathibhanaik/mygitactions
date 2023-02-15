@@ -1,6 +1,15 @@
 import os
+import tkinter as tk
+from tkinter import filedialog
 
-# List all files in the current directory
-files = os.listdir(".")
-for file in files:
-    print(file)
+root = tk.Tk()
+
+def run_file():
+    file_path = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select file", filetypes=[("Python files", "*.py")])
+    if file_path:
+        os.system(f"python {file_path}")
+
+run_button = tk.Button(root, text="Run file", command=run_file)
+run_button.pack()
+
+root.mainloop()
