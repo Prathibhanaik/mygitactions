@@ -1,25 +1,21 @@
-name: User trigger
-on: push
+name: My user trigger
+
+on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build
-        run: echo "Building..."
-      - name: Test
-        run: echo "Testing..."
-
-  gui:
+  my-job:
     runs-on: windows-latest
-    needs: []
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Run GUI
+      - name: List files
         run: |
-          $yaml = Get-Content -Path .\Manual_trigger.yml -Raw
-          $workflow = ConvertFrom-Yaml -InputObject $yaml
-          $jobNames = $workflow.jobs.psobject.Properties.Name
-          $selectedJob = $jobNames | Out-GridView -Title "Select a job to run" -PassThru
-          Write-Host "You selected job $selectedJob"
+          echo "::set-output name=files::$(dir /B)"
+      - name: Select file
+        id: select-file
+        run: |
+          $files = "${{ steps.list-files.outputs.files }}".Split("`n")
+          $selected = $files | Out-GridView -OutputMode Single -Title "Select a file"
+          echo "::set-output name=selected-file::$selected"
+      - name: Use selected file
+        run: |
+          $selected = "${{ steps.select-file.outputs.selected-file }}"
+          echo "Selected file: $selected"
