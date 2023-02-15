@@ -1,11 +1,14 @@
 name: My user trigger
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
-  list_files:
+  run_batch_file:
     runs-on: windows-latest
     steps:
-      - name: List files
-        run: |
-          dir
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Run batch file
+        run: my_batch_file.bat
