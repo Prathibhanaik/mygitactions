@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: List files
         run: |
-          echo "::set-output name=files::$(.\mygitactions)"
+          echo "::set-output name=files::$(.)"
       - name: Select file
         id: select-file
         run: |
