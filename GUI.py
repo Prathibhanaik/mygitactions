@@ -1,15 +1,24 @@
-import os
-import tkinter as tk
-from tkinter import filedialog
+import PySimpleGUI as sg
 
-root = tk.Tk()
+# Define the layout of the GUI
+layout = [
+    [sg.Text('Enter your name:'), sg.InputText()],
+    [sg.Button('Submit'), sg.Button('Cancel')]
+]
 
-def run_file():
-    file_path = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select file", filetypes=[("Python files", "*.py")])
-    if file_path:
-        os.system(f"python {file_path}")
+# Create the GUI window
+window = sg.Window('GitHub Action', layout)
 
-run_button = tk.Button(root, text="Run file", command=run_file)
-run_button.pack()
+# Run the event loop
+while True:
+    event, values = window.read()
+    if event in (None, 'Cancel'):
+        # Exit the event loop if the user closes the window or clicks the Cancel button
+        break
+    elif event == 'Submit':
+        # Perform some action based on the user's input
+        name = values[0]
+        print(f'Hello, {name}!')
 
-root.mainloop()
+# Close the window
+window.close()
