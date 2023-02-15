@@ -3,10 +3,12 @@ name: My user trigger
 on:
   workflow_dispatch:
     inputs:
-      file:
-        description: 'File to run'
-        required: true
-        default: '.\Box.bat'
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - .\Box.bat
+        - .\allclr.bat
         
 jobs:
   my_job:
@@ -15,8 +17,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run file
-        run:  ${{ github.workspace }}/${{ inputs.file }}
-        # The input parameter 'file' is used to specify the file to run
+        run:  ${{ github.workspace }}/${{ inputs.choice }}
+        # The input parameter 'choice' is used to specify the file to run
 
 
 
