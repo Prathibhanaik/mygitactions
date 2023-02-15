@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: List files
         run: |
-          echo "::set-output name=files::$(github/workflows)"
+          echo "::set-output name=files::$(dir /C)"
       - name: Select file
         id: select-file
         run: |
