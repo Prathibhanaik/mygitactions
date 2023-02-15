@@ -1,32 +1,27 @@
-name: Batch Files Execution
-
-on: [push]
+name: User trigger
+on: push
 
 jobs:
-  my-job:
-    runs-on: windows-latest
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Choose a file
-        uses: actions/github-script@v4
-        with:
-          script: |
-            const { data: files } = await octokit.rest.repos.listFiles({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              path: '.'
-            });
-            const fileNames = files.map(file => file.name);
-            return {
-              inputs: {
-                fileName: {
-                  description: 'Select a file to use',
-                  required: true,
-                  type: 'select',
-                  options: fileNames
-                }
-              }
-            };
-          ad: true
-      - name: Use the chosen file
+      - name: Build
+        run: echo "Building..."
+      - name: Test
+        run: echo "Testing..."
+
+  gui:
+    runs-on: windows-latest
+    needs: []
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup PowerShell
+        uses: microsoft/setup-powershell@v1
+      - name: Run GUI
         run: |
-          echo "The chosen file is ${{ github.event.inputs.fileName }}"
+          $yaml = Get-Content -Path .\workflow.yaml -Raw
+          $workflow = ConvertFrom-Yaml -InputObject $yaml
+          $jobNames = $workflow.jobs.psobject.Properties.Name
+          $selectedJob = $jobNames | Out-GridView -Title "Select a job to run" -PassThru
+          Write-Host "You selected job $selectedJob"
