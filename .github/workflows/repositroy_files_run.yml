@@ -6,19 +6,26 @@ on:
       component:
         description: 'Select the component to run'
         required: true
-        default: 'component1'
+        default: ''
         options:
-          - component1
-          - component2
-          - component3
+          - CTM
+          - CMS
+          - HLC
       unit:
         description: 'Select the unit to run'
         required: true
-        default: 'unit1'
+        default: ''
         options:
           - unit1
           - unit2
           - unit3
+      file_name:
+        description: 'Select a file'
+        required: true
+        default: ''
+        type: string
+        options: |
+          ${{ join(', ', (ls() | select(match('^(${{ inputs.component }}/${{ inputs.unit }}).*\\.bat$')) | map('basename') | list)) }}
 
 jobs:
   build:
@@ -27,30 +34,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run selected unit
-        run: |
-          if [ "${{ github.event.inputs.component }}" = "component1" ]; then
-            if [ "${{ github.event.inputs.unit }}" = "unit1" ]; then
-              # run component1 unit1
-            elif [ "${{ github.event.inputs.unit }}" = "unit2" ]; then
-              # run component1 unit2
-            elif [ "${{ github.event.inputs.unit }}" = "unit3" ]; then
-              # run component1 unit3
-            fi
-          elif [ "${{ github.event.inputs.component }}" = "component2" ]; then
-            if [ "${{ github.event.inputs.unit }}" = "unit1" ]; then
-              # run component2 unit1
-            elif [ "${{ github.event.inputs.unit }}" = "unit2" ]; then
-              # run component2 unit2
-            elif [ "${{ github.event.inputs.unit }}" = "unit3" ]; then
-              # run component2 unit3
-            fi
-          elif [ "${{ github.event.inputs.component }}" = "component3" ]; then
-            if [ "${{ github.event.inputs.unit }}" = "unit1" ]; then
-              # run component3 unit1
-            elif [ "${{ github.event.inputs.unit }}" = "unit2" ]; then
-              # run component3 unit2
-            elif [ "${{ github.event.inputs.unit }}" = "unit3" ]; then
-              # run component3 unit3
-            fi
-          fi
-
+        run:  ${{ inputs.component }}/${{ inputs.unit }}/${{ inputs.file_name }}
+        
+        
