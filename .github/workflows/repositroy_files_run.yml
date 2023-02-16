@@ -14,9 +14,11 @@ on:
         default: 'CTM'
 
 jobs:
-  my-job:
+  my_job:
     runs-on: windows-latest
-    if: ${{ github.ref == 'refs/heads/' + inputs.branch && (!inputs.label || github.event.inputs.label == inputs.label) }}
     steps:
-      - name: My Step
-        run: echo "Hello, world!"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run file
+        run:  ${{ github.workspace }}/${{ inputs.branch.label }}
+        # The input parameter 'choice' is used to specify the file to run
