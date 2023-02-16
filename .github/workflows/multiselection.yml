@@ -1,20 +1,16 @@
 name: multiselection
-on:
-  workflow_dispatch:
-    inputs:
-      options:
-        description: 'Select options'
-        required: true
-        type: multiselect
-        options:
-          option1: 'Option 1'
-          option2: 'Option 2'
-          option3: 'Option 3'
-          
+
+on: [push]
 jobs:
-  my-job:
+  test:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        unit: [unit1, unit2, unit3]
     steps:
-      - name: My Step
-        run: |
-          echo "Selected options: ${{ join(github.event.inputs.options, ', ') }}"
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Run unit tests
+      run: |
+        cd ${{ matrix.unit }}
+        dotnet test
