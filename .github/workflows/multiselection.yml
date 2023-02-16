@@ -1,0 +1,20 @@
+name: multiselection
+on:
+  workflow_dispatch:
+    inputs:
+      options:
+        description: 'Select options'
+        required: true
+        type: multiselect
+        options:
+          option1: 'Option 1'
+          option2: 'Option 2'
+          option3: 'Option 3'
+          
+jobs:
+  my-job:
+    runs-on: windows-latest
+    steps:
+      - name: My Step
+        run: |
+          echo "Selected options: ${{ join(github.event.inputs.options, ', ') }}"
