@@ -1,0 +1,20 @@
+name: Run_repo_contents
+
+on:
+  workflow_dispatch:
+    inputs:
+      folder:
+        description: 'Select folder to run'
+        required: true
+        default: '.'
+
+jobs:
+  run-folder:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run folder
+        run: |
+          cd ${{ github.workspace }}/${{ github.event.inputs.folder }}
+          # Run commands to execute the code in the selected folder
