@@ -7,7 +7,7 @@ on:
       folder_path:
         description: 'The path of the folder to trigger the workflow'
         required: true
-        default: '.\'
+        default: ''
 
 jobs:
   display_folder:
