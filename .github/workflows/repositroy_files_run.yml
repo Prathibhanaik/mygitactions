@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       component:
+        type: choice
         description: 'Select the component to run'
         required: true
         default: ''
@@ -12,6 +13,7 @@ on:
           - CMS
           - HLC
       unit:
+        type: choice
         description: 'Select the unit to run'
         required: true
         default: ''
