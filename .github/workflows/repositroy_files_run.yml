@@ -3,18 +3,19 @@ name: Run_repo_contents
 
 on:
   workflow_dispatch:
+    inputs:
+      folder_path:
+        description: 'The path of the folder to trigger the workflow'
+        required: true
+        default: ''
 
 jobs:
-  list_files:
-    runs-on: windows-latest
+  display_folder:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: List files
-        shell: pwsh
-        run: |
-          $files = Get-ChildItem -Path . -Recurse | Where-Object { !$_.PSIsContainer }
-          Write-Host "Files in repository:"
-          foreach ($file in $files) {
-            Write-Host $file.FullName
-          }
+        with:
+          ref: main
+      - name: Display folder
+        run: ls ${{ github.workspace }}/${{ github.event.inputs.folder_path }}
