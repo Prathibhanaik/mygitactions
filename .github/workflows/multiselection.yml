@@ -15,8 +15,7 @@ on:
       matrix:
         description: 'Matrix of options'
         required: true
-        default:
-          option3:
+        options:
             - 'true'
             - 'false'
             - 'maybe'
@@ -24,11 +23,7 @@ jobs:
   build:
     runs-on: windows-latest
 
-    strategy:
-      matrix:
-        option1: [${{ github.event.inputs.option1 }}]
-        option2: [${{ github.event.inputs.option2 }}]
-        option3: [${{ github.event.inputs.matrix.option3 }}]
+
 
     steps:
     - name: Display options
