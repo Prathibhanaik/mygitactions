@@ -4,18 +4,17 @@ name: Run_repo_contents
 on:
   workflow_dispatch:
     inputs:
-      folder_path:
-        description: 'The path of the folder to trigger the workflow'
+      directory:
+        description: 'The directory to display'
         required: true
-        default: ''
 
 jobs:
-  display_folder:
-    runs-on: Windows-latest
+  display-directory-tree:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: main
-      - name: Display folder
-        run: ${{ github.workspace }}/${{ github.event.inputs.folder_path }}
+      - name: Display directory tree
+        run: |
+          cd ${{ github.workspace }}/${{ github.event.inputs.directory }}
+          tree
