@@ -1,24 +1,25 @@
 name: Run_repo_contents
 
-
 on:
   workflow_dispatch:
     inputs:
       branch:
-        description: 'The branch to use'
+        description: 'The branch to run the file from'
         required: true
-        default: 'main'
-      label:
-        description: 'The label to use'
+      file:
+        description: 'The file to run'
         required: true
-        default: 'CTM'
 
 jobs:
-  my_job:
+  run-file:
     runs-on: windows-latest
     steps:
-      - name: Checkout code
+      - name: Checkout branch
         uses: actions/checkout@v2
-      - name: Run file
-        run:  ${{ github.workspace }}/${{ inputs.branch.label }}
-        # The input parameter 'choice' is used to specify the file to run
+        with:
+          ref: ${{ inputs.branch }}
+      - name: Execute file
+        run: |
+          # Replace this with the command or script to run your file
+          ${inputs.file}
+
