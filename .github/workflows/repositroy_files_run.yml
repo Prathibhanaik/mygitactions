@@ -21,5 +21,5 @@ jobs:
       - name: Execute file
         run: |
           # Replace this with the command or script to run your file
-          ${inputs.file}
+          ${{ github.workspace }}/${{ inputs.file }}
 
