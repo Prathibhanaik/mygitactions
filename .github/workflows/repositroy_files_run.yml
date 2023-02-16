@@ -25,9 +25,6 @@ on:
         description: 'Select a file'
         required: true
         default: ''
-        type: string
-        options: |
-          ${{ join(', ', (ls() | select(match('^(${{ inputs.component }}/${{ inputs.unit }}).*\\.bat$')) | map('basename') | list)) }}
 
 jobs:
   build:
