@@ -3,23 +3,54 @@ name: Run_repo_contents
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'The branch to run the file from'
+      component:
+        description: 'Select the component to run'
         required: true
-      file:
-        description: 'The file to run'
+        default: 'component1'
+        options:
+          - component1
+          - component2
+          - component3
+      unit:
+        description: 'Select the unit to run'
         required: true
+        default: 'unit1'
+        options:
+          - unit1
+          - unit2
+          - unit3
 
 jobs:
-  run-file:
+  build:
     runs-on: windows-latest
     steps:
-      - name: Checkout branch
+      - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: ${{ inputs.branch }}
-      - name: Execute file
+      - name: Run selected unit
         run: |
-          # Replace this with the command or script to run your file
-          ${{ github.workspace }}/${{ inputs.file }}
+          if [ "${{ github.event.inputs.component }}" = "component1" ]; then
+            if [ "${{ github.event.inputs.unit }}" = "unit1" ]; then
+              # run component1 unit1
+            elif [ "${{ github.event.inputs.unit }}" = "unit2" ]; then
+              # run component1 unit2
+            elif [ "${{ github.event.inputs.unit }}" = "unit3" ]; then
+              # run component1 unit3
+            fi
+          elif [ "${{ github.event.inputs.component }}" = "component2" ]; then
+            if [ "${{ github.event.inputs.unit }}" = "unit1" ]; then
+              # run component2 unit1
+            elif [ "${{ github.event.inputs.unit }}" = "unit2" ]; then
+              # run component2 unit2
+            elif [ "${{ github.event.inputs.unit }}" = "unit3" ]; then
+              # run component2 unit3
+            fi
+          elif [ "${{ github.event.inputs.component }}" = "component3" ]; then
+            if [ "${{ github.event.inputs.unit }}" = "unit1" ]; then
+              # run component3 unit1
+            elif [ "${{ github.event.inputs.unit }}" = "unit2" ]; then
+              # run component3 unit2
+            elif [ "${{ github.event.inputs.unit }}" = "unit3" ]; then
+              # run component3 unit3
+            fi
+          fi
 
