@@ -1,16 +1,38 @@
 name: multiselection
 
-on: [push]
+
+on:
+  workflow_dispatch:
+    inputs:
+      option1:
+        description: 'Option 1'
+        required: true
+        default: 'a'
+      option2:
+        description: 'Option 2'
+        required: true
+        default: 'x'
+      matrix:
+        description: 'Matrix of options'
+        required: true
+        default:
+          option3:
+            - 'true'
+            - 'false'
+            - 'maybe'
 jobs:
-  test:
+  build:
     runs-on: windows-latest
+
     strategy:
       matrix:
-        unit: [unit1, unit2, unit3]
+        option1: [${{ github.event.inputs.option1 }}]
+        option2: [${{ github.event.inputs.option2 }}]
+        option3: [${{ github.event.inputs.matrix.option3 }}]
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Run unit tests
+    - name: Display options
       run: |
-        cd ${{ matrix.unit }}
-        dotnet test
+        echo "option1: ${{ matrix.option1 }}"
+        echo "option2: ${{ matrix.option2 }}"
+        echo "option3: ${{ matrix.option3 }}"
