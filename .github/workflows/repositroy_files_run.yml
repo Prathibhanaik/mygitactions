@@ -4,17 +4,19 @@ name: Run_repo_contents
 on:
   workflow_dispatch:
     inputs:
-      directory:
-        description: 'The directory to display'
+      branch:
+        description: 'The branch to use'
         required: true
+        default: 'main'
+      label:
+        description: 'The label to use'
+        required: true
+        default: 'CTM'
 
 jobs:
-  display-directory-tree:
-    runs-on: ubuntu-latest
+  my-job:
+    runs-on: windows-latest
+    if: ${{ github.ref == 'refs/heads/' + inputs.branch && (!inputs.label || github.event.inputs.label == inputs.label) }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Display directory tree
-        run: |
-          cd ${{ github.workspace }}/${{ github.event.inputs.directory }}
-          tree
+      - name: My Step
+        run: echo "Hello, world!"
