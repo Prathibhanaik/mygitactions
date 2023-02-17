@@ -1,27 +1,31 @@
 name: multiselection
 
 on: [push]
- 
+
 jobs:
-  example_matrix:
+  build:
     runs-on: windows-latest
     strategy:
       matrix:
-        fruit: [apple, pear]
-        animal: [cat, dog]
-        include:
-          - color: green
-          - color: pink
-            animal: cat
-          - fruit: apple
-            shape: circle
-          - fruit: banana
-          - fruit: banana
-            animal: cat
+        unit: [unit1, unit2, unit3, unit4]
     steps:
-    - uses: actions/checkout@v1
-    - name: Run batch file 1
-      run: echo ""
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run unit tests
+        run: |
+          if [ "${{ matrix.unit }}" == "unit1" ]; then
+            echo "Running unit1 tests"
+          fi
+          if [ "${{ matrix.unit }}" == "unit2" ]; then
+            echo "Running unit2 tests"
+          fi
+          if [ "${{ matrix.unit }}" == "unit3" ]; then
+            echo "Running unit3 tests"
+          fi
+          if [ "${{ matrix.unit }}" == "unit4" ]; then
+            echo "Running unit4 tests"
+          fi
+
 
 
 
