@@ -1,28 +1,26 @@
 name: multiselection
 
-
 on:
   workflow_dispatch:
     inputs:
-      units:
-        type: choice
-        description: 'Select Unit'
+      choice:
+        description: 'Choose an option'
         required: true
-        default: 'CMS'
-        options: ['CMS', 'CTM', 'HLC']
+        default: 'Option 1'
+        options: |
+          Option 1
+          Option 2
+          Option 3
 
 jobs:
-  build-and-test:
-    runs-on: ${{ matrix.units }}
-    strategy:
-      matrix:
-        units: ${{ fromJson(inputs.units) }}
-
+  build:
+    runs-on: windows-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Run a script
+        run: |
+          choice=${{ github.event.inputs.choice }}
+          echo "Selected choice: $choice"
 
-      # rest of the job steps
 
 
 
