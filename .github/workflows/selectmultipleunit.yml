@@ -18,9 +18,9 @@ jobs:
       - name: Build
         run: |
           if ( "${{ matrix.selected }}" == "true" ); then
-            # Build commands for the selected matrix
+            echo "running job1"
           else
-            # Build commands for the non-selected matrix
+             echo "running job2"
           fi
 
   
