@@ -13,18 +13,18 @@ jobs:
         uses: actions/checkout@v2
       - name: Run unit tests
         run: |
-          if ( "${{ matrix.unit }}" == "unit1" ); then
+          if ( "${{ matrix.unit }}" == "unit1" );
             echo "Running unit1 tests"
-          fi
-          if ( "${{ matrix.unit }}" == "unit2" ); then
+        
+          if ( "${{ matrix.unit }}" == "unit2" ); 
             echo "Running unit2 tests"
-          fi
-          if ( "${{ matrix.unit }}" == "unit3" ); then
+        
+          if ( "${{ matrix.unit }}" == "unit3" );
             echo "Running unit3 tests"
-          fi
-          if ( "${{ matrix.unit }}" == "unit4" ); then
+        
+          if ( "${{ matrix.unit }}" == "unit4" ); 
             echo "Running unit4 tests"
-          fi
+        
 
 
 
