@@ -4,7 +4,8 @@ name: multiselection
 on:
   workflow_dispatch:
     inputs:
-      os:
+      Units:
+        type: choice
         description: 'Operating system'
         required: true
         default: 'ubuntu-latest'
