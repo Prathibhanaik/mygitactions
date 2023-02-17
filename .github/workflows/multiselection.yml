@@ -4,19 +4,19 @@ name: multiselection
 on:
   workflow_dispatch:
     inputs:
-      Units:
+      units:
         type: choice
-        description: 'Operating system'
+        description: 'Select Unit'
         required: true
-        default: 'ubuntu-latest'
-        options: ['ubuntu-latest', 'macos-latest', 'windows-latest']
+        default: 'CMS'
+        options: ['CMS', 'CTM', 'HLC']
 
 jobs:
   build-and-test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.units }}
     strategy:
       matrix:
-        os: ${{ fromJson(inputs.os) }}
+        units: ${{ fromJson(inputs.units) }}
 
     steps:
       - name: Checkout code
