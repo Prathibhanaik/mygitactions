@@ -10,11 +10,17 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        selected_matrix: [unit1, unit2, unit3]
+        os: [win2019, win2022]
+        selected: [true, false]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run tests
-        if: matrix.selected_matrix == unit1
-        run: echo "selected unit1"
+      - name: Build
+        run: |
+          if [ "${{ matrix.selected }}" == "true" ]; then
+            # Build commands for the selected matrix
+          else
+            # Build commands for the non-selected matrix
+          fi
+
   
