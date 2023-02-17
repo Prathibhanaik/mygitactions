@@ -1,32 +1,64 @@
-name: multiselection
+name: Run_repo_contents
 
 on:
   workflow_dispatch:
     inputs:
-      unit:
-        description: 'Select units to run'
+      component1:
+        type: choice
+        description: 'Select the component to run'
         required: true
-        default: 'unit1,unit2'
+        default: ''
+        options:
+          - CTM
+          - CMS
+          - HLC
+      component2:
+        type: choice
+        description: 'Select the component to run'
+        required: true
+        default: ''
+        options:
+          - CTM
+          - CMS
+          - HLC
+      component3:
+        type: choice
+        description: 'Select the component to run'
+        required: true
+        default: ''
+        options:
+          - CTM
+          - CMS
+          - HLC
+      unit:
+        type: choice
+        description: 'Select the unit to run'
+        required: true
+        default: ''
+        options:
+          - unit1
+          - unit2
+          - unit3
+      file_name:
+        description: 'Select a file'
+        required: true
+        default: ''
+
 jobs:
   build:
     runs-on: windows-latest
-    strategy:
-      matrix:
-        unit: [unit1, unit2, unit3, unit4]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run unit tests
-        run: |
-          if ( "${{ matrix.unit }}" == "unit1" )
-            echo "Running unit1 tests"
-          
-          if ( "${{ matrix.unit }}" == "unit2" )
-            echo "Running unit2 tests"
+      - name: Run selected component1
+        run:  ${{ inputs.component1 }}/${{ inputs.unit }}/${{ inputs.file_name }}
+      - name: Run selected component2
+        run:  ${{ inputs.component2 }}/${{ inputs.unit }}/${{ inputs.file_name }}
+      - name: Run selected component3
+        run:  ${{ inputs.component3 }}/${{ inputs.unit }}/${{ inputs.file_name }}
         
-          if ( "${{ matrix.unit }}" == "unit3" ) 
-            echo "Running unit3 tests"
-          
-          if ( "${{ matrix.unit }}" == "unit4" ) 
-            echo "Running unit4 tests"
-          
+        
+        
+        
+        
+        
