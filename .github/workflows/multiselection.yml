@@ -30,7 +30,7 @@ on:
           - CTM
           - CMS
           - HLC
-      unit:
+      component1unit:
         type: choice
         description: 'Select the unit to run'
         required: true
@@ -39,7 +39,33 @@ on:
           - unit1
           - unit2
           - unit3
-      file_name:
+      component2unit:
+        type: choice
+        description: 'Select the unit to run'
+        required: true
+        default: ''
+        options:
+          - unit1
+          - unit2
+          - unit3  
+      component3unit:
+        type: choice
+        description: 'Select the unit to run'
+        required: true
+        default: ''
+        options:
+          - unit1
+          - unit2
+          - unit3
+      Component1file_name:
+        description: 'Select a file'
+        required: true
+        default: ''
+      Component2file_name:
+        description: 'Select a file'
+        required: true
+        default: ''
+      Component3file_name:
         description: 'Select a file'
         required: true
         default: ''
@@ -51,11 +77,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run selected component1
-        run:  ${{ inputs.component1 }}/${{ inputs.unit }}/${{ inputs.file_name }}
+        run:  ${{ inputs.component1 }}/${{ inputs.component1unit }}/${{ inputs.Component1file_name }}
       - name: Run selected component2
-        run:  ${{ inputs.component2 }}/${{ inputs.unit }}/${{ inputs.file_name }}
+        run:  ${{ inputs.component2 }}/${{ inputs.component2unit }}/${{ inputs.Component2file_name }}
       - name: Run selected component3
-        run:  ${{ inputs.component3 }}/${{ inputs.unit }}/${{ inputs.file_name }}
+        run:  ${{ inputs.component3 }}/${{ inputs.component3unit }}/${{ inputs.Component3file_name }}
         
         
         
