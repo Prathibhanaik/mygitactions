@@ -5,25 +5,7 @@ on:
     inputs:
       component1:
         type: choice
-        description: 'Select the component to run'
-        required: true
-        default: ''
-        options:
-          - CTM
-          - CMS
-          - HLC
-      component2:
-        type: choice
-        description: 'Select the component to run'
-        required: true
-        default: ''
-        options:
-          - CTM
-          - CMS
-          - HLC
-      component3:
-        type: choice
-        description: 'Select the component to run'
+        description: 'Select the component1 to run'
         required: true
         default: ''
         options:
@@ -32,25 +14,7 @@ on:
           - HLC
       component1unit:
         type: choice
-        description: 'Select the unit to run'
-        required: true
-        default: ''
-        options:
-          - unit1
-          - unit2
-          - unit3
-      component2unit:
-        type: choice
-        description: 'Select the unit to run'
-        required: true
-        default: ''
-        options:
-          - unit1
-          - unit2
-          - unit3  
-      component3unit:
-        type: choice
-        description: 'Select the unit to run'
+        description: 'Select the unit of component1 to run'
         required: true
         default: ''
         options:
@@ -58,15 +22,53 @@ on:
           - unit2
           - unit3
       Component1file_name:
-        description: 'Select a file'
+        description: 'Select a file of component1'
         required: true
         default: ''
+        
+      component2:
+        type: choice
+        description: 'Select the component2 to run'
+        required: true
+        default: ''
+        options:
+          - CTM
+          - CMS
+          - HLC
+      component2unit:
+        type: choice
+        description: 'Select the unit of component2 to run'
+        required: true
+        default: ''
+        options:
+          - unit1
+          - unit2
+          - unit3 
       Component2file_name:
-        description: 'Select a file'
+        description: 'Select a file of component2'
         required: true
         default: ''
+        
+      component3:
+        type: choice
+        description: 'Select the component3 to run'
+        required: true
+        default: ''
+        options:
+          - CTM
+          - CMS
+          - HLC
+      component3unit:
+        type: choice
+        description: 'Select the unit of component3 to run'
+        required: true
+        default: ''
+        options:
+          - unit1
+          - unit2
+          - unit3
       Component3file_name:
-        description: 'Select a file'
+        description: 'Select a file of component 3'
         required: true
         default: ''
 
