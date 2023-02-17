@@ -1,14 +1,16 @@
 name: selectmultipleunit
 
+
 on: [push]
 
 jobs:
   build:
     runs-on: windows-latest
-    
-    
-- name: Select multiple units
-  run: |
-    $units = "unit1", "unit2", "unit3", "unit4"
-    $selectedUnits = $units | Select-String -Pattern "unit1|unit3"
-    echo "Selected units: $selectedUnits"
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Select multiple units
+      run: |
+        $units = "unit1", "unit2", "unit3", "unit4"
+        $selectedUnits = $units | Select-String -Pattern "unit1|unit3"
+        echo "Selected units: $selectedUnits"
