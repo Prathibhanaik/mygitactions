@@ -10,8 +10,9 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        os: [win2019, win2022]
-        selected: [true, false]
+        Component: [component1, component2]
+        Unit: [unit1, unit2]
+        file: [file1.bat,file2.bat]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
