@@ -21,6 +21,10 @@ jobs:
           - fruit: banana
           - fruit: banana
             animal: cat
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run batch file 1
+      run: echo ""
 
 
 
