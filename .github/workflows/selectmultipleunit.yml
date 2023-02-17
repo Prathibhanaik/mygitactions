@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: |
-          if [ "${{ matrix.selected }}" == "true" ]; then
+          if ( "${{ matrix.selected }}" == "true" ); then
             # Build commands for the selected matrix
           else
             # Build commands for the non-selected matrix
