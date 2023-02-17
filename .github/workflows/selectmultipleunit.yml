@@ -10,9 +10,11 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        unit: [unit1, unit2, unit3]
+        selected_matrix: [unit1, unit2, unit3]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run tests
-        run:  tests/unit/$unit
+        if: matrix.selected_matrix == unit1
+        run: echo "selected unit1"
+  
