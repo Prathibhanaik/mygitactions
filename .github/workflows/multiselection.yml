@@ -1,33 +1,25 @@
 name: multiselection
-
-
 on:
   workflow_dispatch:
     inputs:
-      option1:
-        description: 'Option 1'
+      num_units:
+        description: 'Number of units to run the workflow on'
         required: true
-        default: 'a'
-      option2:
-        description: 'Option 2'
-        required: true
-        default: 'x'
-      matrix:
-        description: 'Matrix of options'
-        required: true
-        options:
-            - 'true'
-            - 'false'
-            - 'maybe'
+
+
 jobs:
-  build:
-    runs-on: windows-latest
-
-
-
+  my_job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        units: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     steps:
-    - name: Display options
-      run: |
-        echo "option1: ${{ matrix.option1 }}"
-        echo "option2: ${{ matrix.option2 }}"
-        echo "option3: ${{ matrix.option3 }}"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run units
+        run: |
+          for i in $(seq 1 ${{ matrix.units }}); do
+            echo "Running unit $i"
+            # run the command for the current unit
+          done
+
