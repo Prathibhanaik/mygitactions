@@ -1,9 +1,6 @@
 name: multiselection
 
-on:
-  repository_dispatch:
-    types:
-      - test
+on: [push]
  
 jobs:
   example_matrix:
