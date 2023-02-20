@@ -5,42 +5,42 @@ on:
     inputs:
       component1:
         description: 'CTM'
-        required: false
+        required: true
         type: boolean
  
       component1unit1:
         description: 'unit1'
-        required: false
+        required: true
         type: boolean
         
       component1unit2:
         description: 'unit2'
-        required: false
+        required: true
         type: boolean
         
       component1unit3:
         description: 'unit3'
-        required: false
+        required: true
         type: boolean
         
       component2:
         description: 'HLC'
-        required: false
+        required: true
         type: boolean
  
       component2unit1:
         description: 'unit1'
-        required: false
+        required: true
         type: boolean
         
       component2unit2:
         description: 'unit2'
-        required: false
+        required: true
         type: boolean
         
       component2unit3:
         description: 'unit3'
-        required: false
+        required: true
         type: boolean
 
      
