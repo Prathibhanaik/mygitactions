@@ -1,5 +1,6 @@
 name: Run_repo_contents
 
+
 on:
   workflow_dispatch:
     inputs:
@@ -13,7 +14,8 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        my_matrix_param: ${{ matrix.my_matrix_param }}
+        my_matrix_param:
+          - ${{ matrix.my_matrix_param }}
 
     steps:
       - name: Run my command
