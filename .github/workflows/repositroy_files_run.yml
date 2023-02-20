@@ -1,7 +1,5 @@
 name: Run_repo_contents
 
-name: My Workflow
-
 on:
   workflow_dispatch:
     inputs:
