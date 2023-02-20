@@ -11,7 +11,7 @@ jobs:
   my-job:
     strategy:
       matrix:
-        unit: [.\CMS\unit1, .\CMS\unit2, .\CMS\unit3]
+        unit: [unit1, unit2, unit3]
 
     runs-on: windows-latest
 
@@ -21,14 +21,14 @@ jobs:
 
       # Add steps for each unit
       - name: Build unit 1
-        if: matrix.unit == '.\CMS\unit1'
-        run: build-file1.bat
+        if: matrix.unit == 'unit1'
+        run: .\CMS\unit1\file1.bat
 
       - name: Build unit 2
-        if: matrix.unit == '.\CMS\unit2'
-        run: build-unit-2.bat
+        if: matrix.unit == 'unit2'
+        run: .\CMS\unit2\file1.bat
 
       - name: Build unit 3
-        if: matrix.unit == '.\CMS\unit3'
-        run: build-file1.bat
+        if: matrix.unit == 'unit3'
+        run: .\CMS\unit3\file1.bat
 
