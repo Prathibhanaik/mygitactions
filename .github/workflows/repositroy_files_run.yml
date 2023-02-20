@@ -12,4 +12,4 @@ jobs:
       - name: List files
         run: |
           cd .github/workflows
-          dir /B
+          dir ./
