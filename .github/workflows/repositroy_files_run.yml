@@ -5,17 +5,17 @@ on:
   workflow_dispatch:
     inputs:
       unit1:
-        description: 'Select unit1'
+        description: 'Select unit1 CMS only'
         required: false
-        default: 'CMS'
+        default: ''
       unit2:
-        description: 'Select unit2'
+        description: 'Select unit2 HLC only'
         required: false
-        default: 'HLC'
+        default: ''
       unit3:
-        description: 'Select unit3'
+        description: 'Select unit3 CTM only'
         required: false
-        default: 'CTM'
+        default: ''
 
 jobs:
   unit1:
