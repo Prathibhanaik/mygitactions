@@ -6,7 +6,7 @@ on:
       units:
         description: 'Select the units'
         required: true
-        default: '.\CMS\unit1,.\CMS\unit2,.\CMS\unit3'
+        default: 'unit1,unit2,unit3'
 
 jobs:
   example_job:
@@ -21,6 +21,6 @@ jobs:
           units=${{ github.event.inputs.units }}
           for unit in $(echo $units | sed "s/,/ /g") do
             echo "Running tests for $unit"
-            run: file1.bat
+            run: ".\CMS\"${{units}}\file1.bat
           done
 
