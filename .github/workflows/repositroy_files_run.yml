@@ -3,7 +3,7 @@ name: Run_repo_contents
 on:
   workflow_dispatch:
     inputs:
-      my_matrix_param:
+      my_matrix_param1:
         description: 'A matrix parameter'
         required: true
         default: 'unit2'
@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        my_matrix_param: ${{ matrix.my_matrix_param }}
+        my_matrix_param: ${{ matrix.my_matrix_param1 }}
 
     steps:
       - name: Checkout code
