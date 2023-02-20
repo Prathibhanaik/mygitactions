@@ -21,10 +21,7 @@ on:
           - unit1
           - unit2
           - unit3
-      Component1file_name:
-        description: 'Select a file of component1'
-        required: false
-        default: ''
+
         
       component2:
         type: choice
@@ -44,10 +41,27 @@ on:
           - unit1
           - unit2
           - unit3 
-      Component2file_name:
-        description: 'Select a file of component2'
+
+
+      component3:
+        type: choice
+        description: 'Select the component3 to run'
         required: false
         default: ''
+        options:
+          - CTM
+          - CMS
+          - HLC
+      component3unit:
+        type: choice
+        description: 'Select the unit of component3 to run'
+        required: false
+        default: ''
+        options:
+          - unit1
+          - unit2
+          - unit3
+
         
 jobs:
   build:
