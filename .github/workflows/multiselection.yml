@@ -4,63 +4,65 @@ on:
   workflow_dispatch:
     inputs:
       component1:
-        type: checkbox
-        description: 'Select the component1 to run'
+        description: 'CTM'
         required: false
-        default: ''
-        options:
-          - CTM
-          - CMS
-          - HLC
-      component1unit:
-        type: choice
-        description: 'Select the unit of component1 to run'
+        type: boolean
+ 
+      component1unit1:
+        description: 'unit1'
         required: false
-        default: ''
-        options:
-          - unit1
-          - unit2
-          - unit3
-
+        type: boolean
+        
+      component1unit2:
+        description: 'unit2'
+        required: false
+        type: boolean
+        
+      component1unit3:
+        description: 'unit3'
+        required: false
+        type: boolean
         
       component2:
-        type: choice
-        description: 'Select the component2 to run'
+        description: 'HLC'
         required: false
-        default: ''
-        options:
-          - CTM
-          - CMS
-          - HLC
-      component2unit:
-        type: choice
-        description: 'Select the unit of component2 to run'
+        type: boolean
+ 
+      component2unit1:
+        description: 'unit1'
         required: false
-        default: ''
-        options:
-          - unit1
-          - unit2
-          - unit3 
-
-
+        type: boolean
+        
+      component2unit2:
+        description: 'unit2'
+        required: false
+        type: boolean
+        
+      component2unit3:
+        description: 'unit3'
+        required: false
+        type: boolean
+        
       component3:
-        type: choice
-        description: 'Select the component3 to run'
+        description: 'CMS'
         required: false
-        default: ''
-        options:
-          - CTM
-          - CMS
-          - HLC
-      component3unit:
-        type: choice
-        description: 'Select the unit of component3 to run'
+        type: boolean
+ 
+      component3unit1:
+        description: 'unit1'
         required: false
-        default: ''
-        options:
-          - unit1
-          - unit2
-          - unit3
+        type: boolean
+        
+      component3unit2:
+        description: 'unit2'
+        required: false
+        type: boolean
+        
+      component3unit3:
+        description: 'unit3'
+        required: false
+        type: boolean
+     
 
         
 jobs:
@@ -70,31 +72,33 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run CMS UNIT1
-        if: ${{ github.event.inputs.component1 == 'CMS' }} &&  ${{ github.event.inputs.component1unit == 'unit1' }}
+        if: ${{ github.event.inputs.component1}} &&  ${{ github.event.inputs.component1unit1}}
         run: .\CMS\unit1\file1.bat
       - name: Run CMS UNIT2
-        if: ${{ github.event.inputs.component1 == 'CMS' }} &&  ${{ github.event.inputs.component1unit == 'unit2' }}
+        if: ${{ github.event.inputs.component1}} &&  ${{ github.event.inputs.component1unit2 }}
         run: .\CMS\unit2\file1.bat
       - name: Run CMS UNIT3
-        if: ${{ github.event.inputs.component1 == 'CMS' }} &&  ${{ github.event.inputs.component1unit == 'unit3' }}
-        run: .\CMS\unit3\file1.bat        
+        if: ${{ github.event.inputs.component1 }} &&  ${{ github.event.inputs.component1unit3}}
+        run: .\CMS\unit3\file1.bat     
+        
       - name: Run CTM UNIT1
-        if: ${{ github.event.inputs.component1 == 'CTM' }} &&  ${{ github.event.inputs.component1unit == 'unit1' }}
+        if: ${{ github.event.inputs.component2 }} &&  ${{ github.event.inputs.component2unit1}}
         run: .\CMS\unit1\file1.bat
       - name: Run CTM UNIT2
-        if: ${{ github.event.inputs.component1 == 'CTM' }} &&  ${{ github.event.inputs.component1unit == 'unit2' }}
+        if: ${{ github.event.inputs.component2 }} &&  ${{ github.event.inputs.component2unit2}}
         run: .\CMS\unit2\file1.bat
       - name: Run CTM UNIT3
-        if: ${{ github.event.inputs.component1 == 'CTM' }} &&  ${{ github.event.inputs.component1unit == 'unit3' }}
+        if: ${{ github.event.inputs.component2 }} &&  ${{ github.event.inputs.component2unit3 }}
         run: .\CMS\unit3\file1.bat  
+        
       - name: Run HLC UNIT1
-        if: ${{ github.event.inputs.component1 == 'HLC' }} &&  ${{ github.event.inputs.component1unit == 'unit1' }}
+        if: ${{ github.event.inputs.component3 }} &&  ${{ github.event.inputs.component3unit1 }}
         run: .\HLC\unit1\file1.bat
       - name: Run HLC UNIT2
-        if: ${{ github.event.inputs.component1 == 'CTM' }} &&  ${{ github.event.inputs.component1unit == 'unit2' }}
+        if: ${{ github.event.inputs.component3 }} &&  ${{ github.event.inputs.component3unit2 }}
         run: .\HLC\unit2\file1.bat
       - name: Run HLC UNIT3
-        if: ${{ github.event.inputs.component1 == 'CTM' }} &&  ${{ github.event.inputs.component1unit == 'unit3' }}
+        if: ${{ github.event.inputs.component3}} &&  ${{ github.event.inputs.component31unit3}}
         run: .\HLC\unit3\file1.bat       
 
         
