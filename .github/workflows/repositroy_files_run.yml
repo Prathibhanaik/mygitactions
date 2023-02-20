@@ -15,16 +15,13 @@ jobs:
     if: ${{ github.event.inputs.multiunit == 'unit1' }}
     steps:
       - name: Step 1
-        run: echo "Running unit 1"
-      - name: Step 2
-        run: echo "Unit 1 completed"
+        run: .\Box.bat
+
 
   unit2:
     runs-on: windows-latest
     if: ${{ github.event.inputs.multiunit == 'unit2' }}
     steps:
       - name: Step 1
-        run: echo "Running unit 2"
-      - name: Step 2
-        run: echo "Unit 2 completed"
+        run: .\allclr.bat
 
