@@ -6,7 +6,7 @@ on:
       component1:
         type: choice
         description: 'Select the component1 to run'
-        required: true
+        required: false
         default: ''
         options:
           - CTM
@@ -15,7 +15,7 @@ on:
       component1unit:
         type: choice
         description: 'Select the unit of component1 to run'
-        required: true
+        required: false
         default: ''
         options:
           - unit1
@@ -23,13 +23,13 @@ on:
           - unit3
       Component1file_name:
         description: 'Select a file of component1'
-        required: true
+        required: false
         default: ''
         
       component2:
         type: choice
         description: 'Select the component2 to run'
-        required: true
+        required: false
         default: ''
         options:
           - CTM
@@ -38,7 +38,7 @@ on:
       component2unit:
         type: choice
         description: 'Select the unit of component2 to run'
-        required: true
+        required: false
         default: ''
         options:
           - unit1
@@ -46,44 +46,43 @@ on:
           - unit3 
       Component2file_name:
         description: 'Select a file of component2'
-        required: true
+        required: false
         default: ''
         
-      component3:
-        type: choice
-        description: 'Select the component3 to run'
-        required: true
-        default: ''
-        options:
-          - CTM
-          - CMS
-          - HLC
-      component3unit:
-        type: choice
-        description: 'Select the unit of component3 to run'
-        required: true
-        default: ''
-        options:
-          - unit1
-          - unit2
-          - unit3
-      Component3file_name:
-        description: 'Select a file of component 3'
-        required: true
-        default: ''
-
 jobs:
   build:
     runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run selected component1
-        run:  ${{ inputs.component1 }}/${{ inputs.component1unit }}/${{ inputs.Component1file_name }}
-      - name: Run selected component2
-        run:  ${{ inputs.component2 }}/${{ inputs.component2unit }}/${{ inputs.Component2file_name }}
-      - name: Run selected component3
-        run:  ${{ inputs.component3 }}/${{ inputs.component3unit }}/${{ inputs.Component3file_name }}
+      - name: Run CMS UNIT1
+        if: ${{ github.event.inputs.component1 == 'CMS' }} &&  ${{ github.event.inputs.component1unit == 'unit1' }}
+        run: .\CMS\unit1\file1.bat
+      - name: Run CMS UNIT2
+        if: ${{ github.event.inputs.component1 == 'CMS' }} &&  ${{ github.event.inputs.component1unit == 'unit2' }}
+        run: .\CMS\unit2\file1.bat
+      - name: Run CMS UNIT3
+        if: ${{ github.event.inputs.component1 == 'CMS' }} &&  ${{ github.event.inputs.component1unit == 'unit3' }}
+        run: .\CMS\unit3\file1.bat        
+      - name: Run CTM UNIT1
+        if: ${{ github.event.inputs.component1 == 'CTM' }} &&  ${{ github.event.inputs.component1unit == 'unit1' }}
+        run: .\CMS\unit1\file1.bat
+      - name: Run CTM UNIT2
+        if: ${{ github.event.inputs.component1 == 'CTM' }} &&  ${{ github.event.inputs.component1unit == 'unit2' }}
+        run: .\CMS\unit2\file1.bat
+      - name: Run CTM UNIT3
+        if: ${{ github.event.inputs.component1 == 'CTM' }} &&  ${{ github.event.inputs.component1unit == 'unit3' }}
+        run: .\CMS\unit3\file1.bat  
+      - name: Run HLC UNIT1
+        if: ${{ github.event.inputs.component1 == 'HLC' }} &&  ${{ github.event.inputs.component1unit == 'unit1' }}
+        run: .\HLC\unit1\file1.bat
+      - name: Run HLC UNIT2
+        if: ${{ github.event.inputs.component1 == 'CTM' }} &&  ${{ github.event.inputs.component1unit == 'unit2' }}
+        run: .\HLC\unit2\file1.bat
+      - name: Run HLC UNIT3
+        if: ${{ github.event.inputs.component1 == 'CTM' }} &&  ${{ github.event.inputs.component1unit == 'unit3' }}
+        run: .\HLC\unit3\file1.bat       
+
         
         
         
