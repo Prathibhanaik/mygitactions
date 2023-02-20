@@ -19,12 +19,12 @@ jobs:
       - name: Run unit tests
         run: |
           units=${{ github.event.inputs.units }}
-            if : ${{units}} == "unit1"
+            if : (${{units}} == "unit1")
             run: ".\CMS\unit1\file1.bat
 
-            if: ${{units}} == "unit2"
+            if: (${{units}} == "unit2")
             run: ".\CMS\unit2\file1.bat
  
-            if: ${{units}} == "unit3"
+            if: (${{units}} == "unit3")
               run: ".\CMS\unit3\file1.bat
 
