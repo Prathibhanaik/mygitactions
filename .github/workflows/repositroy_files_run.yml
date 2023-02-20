@@ -1,30 +1,30 @@
 name: Run_repo_contents
 
+
 on:
   workflow_dispatch:
     inputs:
-      units:
-        description: 'Select the units'
+      multiunit:
+        description: 'Select multiunit'
         required: true
-        default: 'unit1,unit2,unit3'
+        default: 'unit1'
 
 jobs:
-  example_job:
+  unit1:
     runs-on: windows-latest
-
+    if: ${{ github.event.inputs.multiunit == 'unit1' }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Step 1
+        run: echo "Running unit 1"
+      - name: Step 2
+        run: echo "Unit 1 completed"
 
-      - name: Run unit tests
-        run: |
-          units=${{ github.event.inputs.units }}
-            if : (${{units}} == "unit1")
-            run: ".\CMS\unit1\file1.bat
-
-            if: (${{units}} == "unit2")
-            run: ".\CMS\unit2\file1.bat
- 
-            if: (${{units}} == "unit3")
-              run: ".\CMS\unit3\file1.bat
+  unit2:
+    runs-on: windows-latest
+    if: ${{ github.event.inputs.multiunit == 'unit2' }}
+    steps:
+      - name: Step 1
+        run: echo "Running unit 2"
+      - name: Step 2
+        run: echo "Unit 2 completed"
 
