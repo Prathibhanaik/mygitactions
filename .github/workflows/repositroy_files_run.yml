@@ -3,22 +3,17 @@ name: Run_repo_contents
 on:
   workflow_dispatch:
     inputs:
-      choice:
-        type: choice
-        description: Make a choice
-        options:
-        - .\unit1
-        - .\unit2
-        - .\unit3
-        
+      my_matrix_param:
+        description: 'A matrix parameter'
+        required: true
+        default: 'unit2'
 
 jobs:
-  my-job:
+  my_job:
+    runs-on: windows-latest
     strategy:
       matrix:
-        unit: ${{ matrix.choice }}
-
-    runs-on: windows-latest
+        my_matrix_param: ${{ matrix.my_matrix_param }}
 
     steps:
       - name: Checkout code
