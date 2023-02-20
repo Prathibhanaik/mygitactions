@@ -3,15 +3,20 @@ name: Run_repo_contents
 on:
   workflow_dispatch:
     inputs:
-      unit:
-        description: 'Select one or more units'
-        required: true
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - .\unit1
+        - .\unit2
+        - .\unit3
+        
 
 jobs:
   my-job:
     strategy:
       matrix:
-        unit: [unit1, unit2, unit3]
+        unit: ${{ matrix.choice }}
 
     runs-on: windows-latest
 
