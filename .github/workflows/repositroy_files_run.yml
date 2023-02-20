@@ -1,17 +1,27 @@
 name: Run_repo_contents
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      units:
+        description: 'Select the units'
+        required: true
+        default: '.\CMS\unit1,.\CMS\unit2,.\CMS\unit3'
 
 jobs:
-  my_job:
-    strategy:
-      matrix:
-        option1: [value1, value2, value3]
-        option2: [value4, value5, value6]
-        include:
-          - option1: value2
-    runs-on: ubuntu-latest
+  example_job:
+    runs-on: windows-latest
+
     steps:
-      - name: My step
-        run: echo "Hello, World!"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run unit tests
+        run: |
+          units=${{ github.event.inputs.units }}
+          for unit in $(echo $units | sed "s/,/ /g")
+          do
+            echo "Running tests for $unit"
+            run: file1.bat
+          done
 
