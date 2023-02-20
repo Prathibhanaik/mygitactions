@@ -71,6 +71,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
       - name: Run CMS UNIT1
         if: ${{ github.event.inputs.component1}} &&  ${{ github.event.inputs.component1unit1}}
         run: .\CMS\unit1\file1.bat
@@ -98,7 +99,7 @@ jobs:
         if: ${{ github.event.inputs.component3 }} &&  ${{ github.event.inputs.component3unit2 }}
         run: .\HLC\unit2\file1.bat
       - name: Run HLC UNIT3
-        if: ${{ github.event.inputs.component3}} &&  ${{ github.event.inputs.component31unit3}}
+        if: ${{ github.event.inputs.component3}} &&  ${{ github.event.inputs.component3unit3}}
         run: .\HLC\unit3\file1.bat       
 
         
