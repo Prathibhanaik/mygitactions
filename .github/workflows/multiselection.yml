@@ -6,41 +6,49 @@ on:
       component1:
         description: 'CTM'
         required: true
+        default: false
         type: boolean
  
       component1unit1:
         description: 'unit1'
         required: true
+        default: false
         type: boolean
         
       component1unit2:
         description: 'unit2'
         required: true
+        default: false
         type: boolean
         
       component1unit3:
         description: 'unit3'
         required: true
+        default: false
         type: boolean
         
       component2:
         description: 'HLC'
         required: true
+        default: false
         type: boolean
  
       component2unit1:
         description: 'unit1'
         required: true
+        default: false
         type: boolean
         
       component2unit2:
         description: 'unit2'
         required: true
+        default: false
         type: boolean
         
       component2unit3:
         description: 'unit3'
         required: true
+        default: false
         type: boolean
 
      
