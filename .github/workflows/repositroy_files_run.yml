@@ -19,8 +19,12 @@ jobs:
       - name: Run unit tests
         run: |
           units=${{ github.event.inputs.units }}
-          for unit in $(echo $units | sed "s/,/ /g") do
-            echo "Running tests for $unit"
-            run: ".\CMS\"${{units}}\file1.bat
-          done
-
+            if [[ $units == "unit1" ]]; then
+              run: ".\CMS\unit1\file1.bat
+            fi
+            if [[ $units == "unit2" ]]; then
+              run: ".\CMS\unit2\file1.bat
+            fi
+            if [[ $units == "unit3" ]]; then
+              run: ".\CMS\unit3\file1.bat
+            fi
