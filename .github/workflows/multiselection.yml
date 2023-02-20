@@ -42,26 +42,7 @@ on:
         description: 'unit3'
         required: false
         type: boolean
-        
-      component3:
-        description: 'CMS'
-        required: false
-        type: boolean
- 
-      component3unit1:
-        description: 'unit1'
-        required: false
-        type: boolean
-        
-      component3unit2:
-        description: 'unit2'
-        required: false
-        type: boolean
-        
-      component3unit3:
-        description: 'unit3'
-        required: false
-        type: boolean
+
      
 
         
@@ -92,15 +73,7 @@ jobs:
         if: ${{ github.event.inputs.component2 }} &&  ${{ github.event.inputs.component2unit3 }}
         run: .\CMS\unit3\file1.bat  
         
-      - name: Run HLC UNIT1
-        if: ${{ github.event.inputs.component3 }} &&  ${{ github.event.inputs.component3unit1 }}
-        run: .\HLC\unit1\file1.bat
-      - name: Run HLC UNIT2
-        if: ${{ github.event.inputs.component3 }} &&  ${{ github.event.inputs.component3unit2 }}
-        run: .\HLC\unit2\file1.bat
-      - name: Run HLC UNIT3
-        if: ${{ github.event.inputs.component3}} &&  ${{ github.event.inputs.component3unit3}}
-        run: .\HLC\unit3\file1.bat       
+  
 
         
         
