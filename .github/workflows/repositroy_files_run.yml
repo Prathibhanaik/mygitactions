@@ -2,37 +2,14 @@ name: Run_repo_contents
 
 on:
   workflow_dispatch:
-    inputs:
-      component:
-        type: choice
-        description: 'Select the component to run'
-        required: true
-        default: ''
-        options:
-          - CTM
-          - CMS
-          - HLC
-      unit:
-        type: choice
-        description: 'Select the unit to run'
-        required: true
-        default: ''
-        options:
-          - unit1
-          - unit2
-          - unit3
-      file_name:
-        description: 'Select a file'
-        required: true
-        default: ''
-
+  
 jobs:
-  build:
+  list-files:
     runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run selected unit
-        run:  ${{ inputs.component }}/${{ inputs.unit }}/${{ inputs.file_name }}
-        
-        
+      - name: List files
+        run: |
+          cd .github/workflows
+          dir /B
