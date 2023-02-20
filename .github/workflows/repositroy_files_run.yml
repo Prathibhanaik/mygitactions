@@ -19,8 +19,7 @@ jobs:
       - name: Run unit tests
         run: |
           units=${{ github.event.inputs.units }}
-          for unit in $(echo $units | sed "s/,/ /g")
-          do
+          for unit in $(echo $units | sed "s/,/ /g") do
             echo "Running tests for $unit"
             run: file1.bat
           done
