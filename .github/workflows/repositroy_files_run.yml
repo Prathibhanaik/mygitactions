@@ -4,26 +4,42 @@ name: Run_repo_contents
 on:
   workflow_dispatch:
     inputs:
-      multiunit:
-        description: 'Select multiunit'
-        required: true
-        default: 'unit1'
+      unit1:
+        description: 'Select unit1'
+        required: false
+        default: 'CMS'
+      unit2:
+        description: 'Select unit2'
+        required: false
+        default: 'HLC'
+      unit3:
+        description: 'Select unit3'
+        required: false
+        default: 'CTM'
 
 jobs:
   unit1:
     runs-on: windows-latest
-    if: ${{ github.event.inputs.multiunit == 'unit1' }}
+    if: ${{ github.event.inputs.multiunit == 'CMS' }}
     steps:
     - uses: actions/checkout@v1
-    - name: Step 1
-      run: .\Box.bat
+    - name: execute CMS
+      run: .\CMS\unit1\file1.bat
 
 
   unit2:
     runs-on: windows-latest
-    if: ${{ github.event.inputs.multiunit == 'unit2' }}
+    if: ${{ github.event.inputs.multiunit == 'HLC' }}
     steps:
     - uses: actions/checkout@v1
-    - name: Step 1
-      run: .\allclr.bat
+    - name: execute HLC
+      run: .\HLC\unit1\file1.bat
+      
+  unit3:
+    runs-on: windows-latest
+    if: ${{ github.event.inputs.multiunit == 'CTM' }}
+    steps:
+    - uses: actions/checkout@v1
+    - name: execute CTM
+      run: .\CTM\unit1\file1.bat
 
