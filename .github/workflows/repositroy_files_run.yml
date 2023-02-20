@@ -1,21 +1,36 @@
 name: Run_repo_contents
 
+name: My Workflow
+
 on:
   workflow_dispatch:
     inputs:
-      choice:
-        type: choice
-        description: Make a choice
-        options:
-        - .\
-        - .\
-        
+      unit:
+        description: 'Select one or more units'
+        required: true
+
 jobs:
-  my_job:
+  my-job:
+    strategy:
+      matrix:
+        unit: [.\CMS\unit1, .\CMS\unit2, .\CMS\unit3]
+
     runs-on: windows-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run file
-        run:  ${{ github.workspace }}/${{ inputs.choice }}
-        # The input parameter 'choice' is used to specify the file to run
+
+      # Add steps for each unit
+      - name: Build unit 1
+        if: matrix.unit == '.\CMS\unit1'
+        run: build-file1.bat
+
+      - name: Build unit 2
+        if: matrix.unit == '.\CMS\unit2'
+        run: build-unit-2.bat
+
+      - name: Build unit 3
+        if: matrix.unit == '.\CMS\unit3'
+        run: build-file1.bat
+
