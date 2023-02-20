@@ -2,14 +2,20 @@ name: Run_repo_contents
 
 on:
   workflow_dispatch:
-  
+    inputs:
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - .\
+        - .\
+        
 jobs:
-  list-files:
+  my_job:
     runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: List files
-        run: |
-          cd .github/workflows
-          dir ./
+      - name: Run file
+        run:  ${{ github.workspace }}/${{ inputs.choice }}
+        # The input parameter 'choice' is used to specify the file to run
