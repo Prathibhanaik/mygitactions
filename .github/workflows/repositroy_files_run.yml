@@ -1,22 +1,19 @@
 name: Run_repo_contents
 
-
 on:
   workflow_dispatch:
     inputs:
-      my_matrix_param:
-        description: 'A matrix parameter'
+      selection:
+        description: 'Select an option'
         required: true
-        default: 'foo,bar'
-
+        default: 'option1'
 jobs:
   my_job:
-    runs-on: windows-latest
     strategy:
       matrix:
-        my_matrix_param:
-          - ${{ matrix.my_matrix_param }}
-
+        option: [ ${{ github.event.inputs.selection }} ]
+    runs-on: windows-latest
     steps:
-      - name: Run my command
-        run: echo "My matrix parameter is ${{ matrix.my_matrix_param }}"
+      - name: Step 1
+        run: echo "Running option ${{ matrix.option }}"
+
