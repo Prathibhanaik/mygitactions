@@ -3,32 +3,18 @@ name: Run_repo_contents
 on:
   workflow_dispatch:
     inputs:
-      my_matrix_param1:
+      my_matrix_param:
         description: 'A matrix parameter'
         required: true
-        default: 'unit2'
+        default: 'foo,bar'
 
 jobs:
   my_job:
     runs-on: windows-latest
     strategy:
       matrix:
-        my_matrix_param: ${{ matrix.my_matrix_param1 }}
+        my_matrix_param: ${{ matrix.my_matrix_param }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      # Add steps for each unit
-      - name: Build unit 1
-        if: matrix.unit == 'unit1'
-        run: .\CMS\unit1\file1.bat
-
-      - name: Build unit 2
-        if: matrix.unit == 'unit2'
-        run: .\CMS\unit2\file1.bat
-
-      - name: Build unit 3
-        if: matrix.unit == 'unit3'
-        run: .\CMS\unit3\file1.bat
-
+      - name: Run my command
+        run: echo "My matrix parameter is ${{ matrix.my_matrix_param }}"
