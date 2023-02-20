@@ -20,7 +20,7 @@ on:
 jobs:
   unit1:
     runs-on: windows-latest
-    if: ${{ github.event.inputs.multiunit == 'CMS' }}
+    if: ${{ github.event.inputs.unit1 == 'CMS' }}
     steps:
     - uses: actions/checkout@v1
     - name: execute CMS
@@ -29,7 +29,7 @@ jobs:
 
   unit2:
     runs-on: windows-latest
-    if: ${{ github.event.inputs.multiunit == 'HLC' }}
+    if: ${{ github.event.inputs.unit2 == 'HLC' }}
     steps:
     - uses: actions/checkout@v1
     - name: execute HLC
@@ -37,7 +37,7 @@ jobs:
       
   unit3:
     runs-on: windows-latest
-    if: ${{ github.event.inputs.multiunit == 'CTM' }}
+    if: ${{ github.event.inputs.unit3 == 'CTM' }}
     steps:
     - uses: actions/checkout@v1
     - name: execute CTM
