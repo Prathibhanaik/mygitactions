@@ -54,23 +54,23 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Run CMS UNIT1
-        if: ${{ github.event.inputs.component1}} &&  ${{ github.event.inputs.component1unit1}}
+        if: ${{ github.event.inputs.component1 == "true"}} &&  ${{ github.event.inputs.component1unit1 == "true"}}
         run: .\CMS\unit1\file1.bat
       - name: Run CMS UNIT2
-        if: ${{ github.event.inputs.component1}} &&  ${{ github.event.inputs.component1unit2 }}
+        if: ${{ github.event.inputs.component1 == "true"}} &&  ${{ github.event.inputs.component1unit2 == "true" }}
         run: .\CMS\unit2\file1.bat
       - name: Run CMS UNIT3
-        if: ${{ github.event.inputs.component1 }} &&  ${{ github.event.inputs.component1unit3}}
+        if: ${{ github.event.inputs.component1 == "true"}} &&  ${{ github.event.inputs.component1unit3 == "true"}}
         run: .\CMS\unit3\file1.bat     
         
       - name: Run CTM UNIT1
-        if: ${{ github.event.inputs.component2 }} &&  ${{ github.event.inputs.component2unit1}}
+        if: ${{ github.event.inputs.component2 == "true"}} &&  ${{ github.event.inputs.component2unit1 == "true"}}
         run: .\CMS\unit1\file1.bat
       - name: Run CTM UNIT2
-        if: ${{ github.event.inputs.component2 }} &&  ${{ github.event.inputs.component2unit2}}
+        if: ${{ github.event.inputs.component2 == "true"}} &&  ${{ github.event.inputs.component2unit2 == "true"}}
         run: .\CMS\unit2\file1.bat
       - name: Run CTM UNIT3
-        if: ${{ github.event.inputs.component2 }} &&  ${{ github.event.inputs.component2unit3 }}
+        if: ${{ github.event.inputs.component2 == "true" }} &&  ${{ github.event.inputs.component2unit3 == "true"}}
         run: .\CMS\unit3\file1.bat  
         
   
