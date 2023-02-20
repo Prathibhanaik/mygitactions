@@ -6,10 +6,12 @@ jobs:
   my_job:
     strategy:
       matrix:
-        unit: [unit1, unit2]
-    runs-on: windows-latest
+        option1: [value1, value2, value3]
+        option2: [value4, value5, value6]
+        include:
+          - option1: value2
+    runs-on: ubuntu-latest
     steps:
-    - name: Run only unit1
-      if: matrix.unit == 'unit1'
-      run: |
-        echo "This is unit1"
+      - name: My step
+        run: echo "Hello, World!"
+
