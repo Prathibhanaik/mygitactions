@@ -14,14 +14,16 @@ jobs:
     runs-on: windows-latest
     if: ${{ github.event.inputs.multiunit == 'unit1' }}
     steps:
-      - name: Step 1
-        run: .\Box.bat
+    - uses: actions/checkout@v1
+    - name: Step 1
+      run: .\Box.bat
 
 
   unit2:
     runs-on: windows-latest
     if: ${{ github.event.inputs.multiunit == 'unit2' }}
     steps:
-      - name: Step 1
-        run: .\allclr.bat
+    - uses: actions/checkout@v1
+    - name: Step 1
+      run: .\allclr.bat
 
