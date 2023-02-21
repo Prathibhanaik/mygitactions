@@ -1,0 +1,17 @@
+name: trial
+
+on:
+  workflow_dispatch:
+    inputs:
+      my-checkbox:
+        description: 'Select an option'
+        default: true
+        required: false
+        type: boolean
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print input
+        run: echo "Checkbox value is ${{ github.event.inputs.my-checkbox }}"
