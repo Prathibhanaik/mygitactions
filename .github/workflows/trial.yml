@@ -9,9 +9,12 @@ on:
         required: false
         type: boolean
 
+env:
+  disable_checkbox: ''
+
 jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
       - name: Print input
-        run: echo "Checkbox value is ${{ github.event.inputs.my-checkbox }}"
+        run: echo "Checkbox value is"
