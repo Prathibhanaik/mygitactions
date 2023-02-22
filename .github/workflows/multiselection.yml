@@ -12,7 +12,7 @@ on:
       component1:
         description: 'CTM'
         default: false
-        required: false
+        required: ${{ github.ref == 'refs/heads/my-branch' }}
         type: boolean
  
       component1unit1:
