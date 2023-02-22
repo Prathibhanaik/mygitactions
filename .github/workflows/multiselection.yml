@@ -3,10 +3,16 @@ name: Multiselection
 on:
   workflow_dispatch:
     inputs:
+    
+      branch:
+        description: 'Name of the branch to run the workflow on'
+        required: true
+        default: 'main'   # Default branch is main    
+        
       component1:
         description: 'CTM'
         default: false
-        required: true
+        required: false
         type: boolean
  
       component1unit1:
@@ -57,6 +63,7 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    if: ${{ github.event.inputs.branch == 'main'}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -82,7 +89,16 @@ jobs:
         run: .\HLC\unit3\file1.bat  
         
   
-
+    if: ${{ github.event.inputs.branch == 'feature' || github.event.inputs.branch == 'test'}}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch }} 
+        
+      - name: Run CTM UNIT1
+        if: ${{ github.event.inputs.component1 == 'true'}}
+        run: .\CTM\Box.bat     
         
         
         
