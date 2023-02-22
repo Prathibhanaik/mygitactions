@@ -6,13 +6,13 @@ on:
       component1:
         description: 'CTM'
         default: false
-        required: false
+        required: true
         type: boolean
  
       component1unit1:
         description: 'unit1'
         default: false
-        required: ${{ github.event.inputs.component1 }}
+        required: false
         type: boolean        
           
       component1unit2:
@@ -30,7 +30,7 @@ on:
       component2:
         description: 'HLC'
         default: false
-        required: false
+        required: true
         type: boolean
  
       component2unit1:
