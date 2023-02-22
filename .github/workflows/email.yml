@@ -8,7 +8,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Send Email
-      uses: actions/email@v2
+      uses: niteoweb/send-email-action@v1
       with:
         server_address: smtp.gmail.com
         server_port: 587
