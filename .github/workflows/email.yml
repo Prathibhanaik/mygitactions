@@ -8,13 +8,13 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Send Email
-      uses: niteoweb/send-email-action@v1
+      uses: dawidd6/action-send-mail@v3
       with:
         server_address: smtp.gmail.com
         server_port: 587
         username: ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: 'GitHub Action Email'
-        to: 'recipient@example.com'
-        from: 'sender@example.com'
+        to: 'ajaykarthick.murugan1461@cientra.com'
+        from: 'prathibha.naik1661@cientra.com'
         body: 'This is a test email sent from a GitHub Action.'
