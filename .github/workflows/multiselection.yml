@@ -14,6 +14,8 @@ on:
         default: false
         required: false
         type: boolean
+        
+    enabled: false
             
       component1unit2:
         description: 'unit2'
