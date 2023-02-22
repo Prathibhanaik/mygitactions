@@ -12,7 +12,7 @@ on:
       component1:
         description: 'CTM'
         default: false
-        required: ${{ github.ref == 'refs/heads/faeture' }}
+        required: ${{ github.ref == 'refs/heads/feature' }}
         type: boolean
  
       component1unit1:
