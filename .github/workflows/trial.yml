@@ -3,18 +3,28 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      my-checkbox:
-        description: 'Select an option'
-        default: true
-        required: false
+      branch:
+        description: 'Name of the branch to run the workflow on'
+        required: true
+        default: 'main'   # Default branch is main    
+    
+      component1:
+        description: 'CTM'
+        default: false
+        required: true
         type: boolean
-
-env:
-  disable_checkbox: ''
-
+ 
+        
 jobs:
-  my-job:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: windows-latest
     steps:
-      - name: Print input
-        run: echo "Checkbox value is"
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch }} 
+        
+      - name: Run CMS UNIT1
+        if: ${{ github.event.inputs.component1 == 'true' && github.event.inputs.component1unit1 == 'true'}}
+        run: .\CTM\Box.bat        
+
