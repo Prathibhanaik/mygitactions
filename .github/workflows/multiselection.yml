@@ -2,6 +2,10 @@ name: Multiselection
 
 on:
   workflow_dispatch:
+    branches:
+      - main
+      - feature/*
+    
     inputs:
       component1:
         description: 'CTM'
@@ -50,7 +54,6 @@ on:
         default: false
         required: false
         type: boolean
-        
 
 
         
