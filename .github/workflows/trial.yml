@@ -24,7 +24,7 @@ jobs:
         with:
           ref: ${{ github.event.inputs.branch }} 
         
-      - name: Run CMS UNIT1
-        if: ${{ github.event.inputs.component1 == 'true' && github.event.inputs.component1unit1 == 'true'}}
+      - name: Run CTM UNIT1
+        if: ${{ github.event.inputs.component1 == 'true'}}
         run: .\CTM\Box.bat        
 
