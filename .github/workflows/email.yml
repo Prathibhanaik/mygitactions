@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   email:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - name: Send Email
       uses: actions/email@v2
