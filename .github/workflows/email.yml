@@ -17,4 +17,4 @@ jobs:
         subject: 'GitHub Action Email'
         to: 'ajaykarthick.murugan1461@cientra.com'
         from: 'prathibha.naik1661@cientra.com'
-        body: 'This is a test email sent from a GitHub Action.'
+        body: 'This is a test email sent from a GitHub Action'
