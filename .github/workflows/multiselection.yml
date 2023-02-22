@@ -61,36 +61,38 @@ on:
 
         
 jobs:
-  build:
-    runs-on: windows-latest
-    if: ${{ github.event.inputs.branch == 'main'}}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        
-      - name: Run CMS UNIT1
-        if: ${{ github.event.inputs.component1 == 'true' && github.event.inputs.component1unit1 == 'true'}}
-        run: .\CMS\unit1\file1.bat        
-      - name: Run CMS UNIT2
-        if: ${{ github.event.inputs.component1 == 'true' &&  github.event.inputs.component1unit2 == 'true' }}
-        run: .\CMS\unit2\file1.bat
-      - name: Run CMS UNIT3
-        if: ${{ github.event.inputs.component1 == 'true' &&  github.event.inputs.component1unit3 == 'true'}}
-        run: .\CMS\unit3\file1.bat     
-        
-      - name: Run HLC UNIT1
-        if: ${{ github.event.inputs.component2 == 'true' &&   github.event.inputs.component2unit1 == 'true'}}
-        run: .\HLC\unit1\file1.bat
-      - name: Run HLC UNIT2
-        if: ${{ github.event.inputs.component2 == 'true' &&  github.event.inputs.component2unit2 == 'true'}}
-        run: .\HLC\unit2\file1.bat
-      - name: Run HLC UNIT3
-        if: ${{ github.event.inputs.component2 == 'true' &&  github.event.inputs.component2unit3 == 'true'}}
-        run: .\HLC\unit3\file1.bat  
+    job1:
+      runs-on: windows-latest
+      if:  ${{ github.event.inputs.branch == 'main'}}
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Run CMS UNIT1
+          if: ${{ github.event.inputs.component1 == 'true' && github.event.inputs.component1unit1 == 'true'}}
+          run: .\CMS\unit1\file1.bat        
+        - name: Run CMS UNIT2
+          if: ${{ github.event.inputs.component1 == 'true' &&  github.event.inputs.component1unit2 == 'true' }}
+          run: .\CMS\unit2\file1.bat
+        - name: Run CMS UNIT3
+          if: ${{ github.event.inputs.component1 == 'true' &&  github.event.inputs.component1unit3 == 'true'}}
+          run: .\CMS\unit3\file1.bat     
+
+        - name: Run HLC UNIT1
+          if: ${{ github.event.inputs.component2 == 'true' &&   github.event.inputs.component2unit1 == 'true'}}
+          run: .\HLC\unit1\file1.bat
+        - name: Run HLC UNIT2
+          if: ${{ github.event.inputs.component2 == 'true' &&  github.event.inputs.component2unit2 == 'true'}}
+          run: .\HLC\unit2\file1.bat
+        - name: Run HLC UNIT3
+          if: ${{ github.event.inputs.component2 == 'true' &&  github.event.inputs.component2unit3 == 'true'}}
+          run: .\HLC\unit3\file1.bat  
         
   
-    if: ${{ github.event.inputs.branch == 'feature' || github.event.inputs.branch == 'test'}}
-    steps:
+    job2:
+      runs-on: windows-latest
+      if:  ${{ github.event.inputs.branch == 'feature' || github.event.inputs.branch == 'test' }}
+      steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
