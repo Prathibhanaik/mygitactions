@@ -1,17 +1,20 @@
 name: trial
 
-
 on:
   workflow_dispatch:
     branches:
       - main
-      - feature
-      - test
+      - feature/*
 
 jobs:
-  my-job:
+  my_job:
     runs-on: ubuntu-latest
     steps:
       - name: Do something
-        run: echo "Hello, ${{ github.event.client_payload.parameter }}"
-
+        run: echo "Hello ${{ inputs.name }}"
+        env:
+          INPUT_NAME: ${{ inputs.name }}
+    inputs:
+      name:
+        description: 'Your name'
+        required: true
