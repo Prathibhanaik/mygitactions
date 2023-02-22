@@ -14,7 +14,6 @@ on:
         default: false
         required: false
         type: boolean
-        enabled: ${{ github.ref == 'refs/heads/main' }}
  
       component1unit1:
         description: 'unit1'
