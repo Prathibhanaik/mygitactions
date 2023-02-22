@@ -3,12 +3,6 @@ name: Multiselection
 on:
   workflow_dispatch:
     inputs:
-    
-      branch:
-        description: 'Name of the branch to run the workflow on'
-        required: true
-        default: 'main'   # Default branch is main    
-        
       component1:
         description: 'CTM'
         default: false
@@ -63,7 +57,7 @@ on:
 jobs:
     job1:
       runs-on: windows-latest
-      if:  ${{ github.event.inputs.branch == 'main'}}
+      if: github.ref == 'refs/heads/main'
       steps:
         - name: Checkout code
           uses: actions/checkout@v2
@@ -91,12 +85,10 @@ jobs:
   
     job2:
       runs-on: windows-latest
-      if:  ${{ github.event.inputs.branch == 'feature' || github.event.inputs.branch == 'test' }}
+      if: startsWith(github.ref, 'refs/heads/feature/')
       steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.inputs.branch }} 
         
       - name: Run CTM UNIT1
         if: ${{ github.event.inputs.component1 == 'true'}}
