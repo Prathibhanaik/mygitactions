@@ -11,7 +11,7 @@ on:
         
       component1:
         description: 'CTM'
-        default: ${{ github.ref == 'refs/heads/feature' }}
+        default: false
         required: true
         type: boolean
  
