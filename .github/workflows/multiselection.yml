@@ -19,10 +19,10 @@ on:
         description: '  unit1'
         type: boolean
         default: false
-        required: ${{ github.event.inputs.component1 == 'true'}}
+        required: false
           
       component1unit2:
-        description: '  unit2'
+        description: '  unit2'  
         default: false
         required: false
         type: boolean
