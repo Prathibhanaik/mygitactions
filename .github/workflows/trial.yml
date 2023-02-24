@@ -3,15 +3,21 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      enable-checkbox:
-        description: 'Enable checkbox'
-        default: false
-        required: ${{ github.event.inputs.enable-condition == 'true' }}
+      name:
+        description: 'Your name'
+        required: true
+      age:
+        description: 'Your age'
+        required: false
+        default: 'unknown'
 
 jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Do something
-        run: echo 'Hello world!'
+      - name: Print input parameters
+        run: |
+          echo "Your name is ${{ github.event.inputs.name }}"
+          echo "Your age is ${{ github.event.inputs.age }}"
+
 
