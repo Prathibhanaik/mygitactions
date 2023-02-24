@@ -2,19 +2,16 @@ name: trial
 
 on:
   workflow_dispatch:
-    branches:
-      - main
-      - feature/*
+    inputs:
+      enable-checkbox:
+        description: 'Enable checkbox'
+        default: ${{ github.event.inputs.enable-condition == 'true' }}
+        required: false
 
 jobs:
-  my_job:
+  my-job:
     runs-on: ubuntu-latest
     steps:
       - name: Do something
-        run: echo "Hello ${{ inputs.name }}"
-        env:
-          INPUT_NAME: ${{ inputs.name }}
-    inputs:
-      name:
-        description: 'Your name'
-        required: true
+        run: echo 'Hello world!'
+
