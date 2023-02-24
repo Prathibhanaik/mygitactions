@@ -13,49 +13,49 @@ on:
         description: 'CTM'
         default: false
         required: true
-        type: checkbox
+        type: boolean
  
       component1unit1:
         description: 'unit1'
         default: false
         required: false
-        type: checkbox        
+        type: boolean        
           
       component1unit2:
         description: 'unit2'
         default: false
         required: false
-        type: checkbox
+        type: boolean
         
       component1unit3:
         description: 'unit3'
         default: false
         required: false
-        type: checkbox
+        type: boolean
         
       component2:
         description: 'HLC'
         default: false
         required: true
-        type: checkbox
+        type: boolean
  
       component2unit1:
         description: 'unit1'
         default: false
         required: false
-        type: checkbox
+        type: boolean
         
       component2unit2:
         description: 'unit2'
         default: false
         required: false
-        type: checkbox
+        type: boolean
         
       component2unit3:
         description: 'unit3'
         default: false
         required: false
-        type: checkbox
+        type: boolean
         
 
 
