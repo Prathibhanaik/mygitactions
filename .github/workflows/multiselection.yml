@@ -5,30 +5,30 @@ on:
     inputs:
     
       branch:
-        description: 'Name of the branch to run the workflow on'
+        description: 'main\feature\test'
         required: true
         default: 'main'   # Default branch is main    
         
       component1:
         description: 'CTM'
-        default: false
-        required: true
         type: boolean
- 
-      component1unit1:
-        description: 'unit1'
         default: false
         required: false
-        type: boolean        
+ 
+      component1unit1:
+        description: '  unit1'
+        type: boolean
+        default: false
+        required: ${{ github.event.inputs.component1 == 'true'}}
           
       component1unit2:
-        description: 'unit2'
+        description: '  unit2'
         default: false
         required: false
         type: boolean
         
       component1unit3:
-        description: 'unit3'
+        description: '  unit3'
         default: false
         required: false
         type: boolean
@@ -36,23 +36,23 @@ on:
       component2:
         description: 'HLC'
         default: false
-        required: true
+        required: false
         type: boolean
  
       component2unit1:
-        description: 'unit1'
+        description: '  unit1'
         default: false
         required: false
         type: boolean
         
       component2unit2:
-        description: 'unit2'
+        description: '  unit2'
         default: false
         required: false
         type: boolean
         
       component2unit3:
-        description: 'unit3'
+        description: '  unit3'
         default: false
         required: false
         type: boolean
