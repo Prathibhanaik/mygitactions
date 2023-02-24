@@ -3,21 +3,20 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Your name'
+      enable-feature:
+        description: 'Enable feature'
         required: true
-      age:
-        description: 'Your age'
+      feature-name:
+        description: 'Feature name'
         required: false
-        default: 'unknown'
 
 jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Print input parameters
-        run: |
-          echo "Your name is ${{ github.event.inputs.name }}"
-          echo "Your age is ${{ github.event.inputs.age }}"
+      - name: Do something
+        if: ${{ github.event.inputs.enable-feature == 'true' }}
+        run: echo "Feature ${{ github.event.inputs.feature-name }} is enabled"
+
 
 
