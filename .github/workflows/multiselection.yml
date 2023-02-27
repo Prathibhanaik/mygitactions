@@ -14,7 +14,7 @@ on:
         type: boolean
         default: false
         required: false
-    disabled: true
+
  
       component1unit1:
         description: '  unit1'
