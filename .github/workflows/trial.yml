@@ -6,7 +6,7 @@ on:
       my_input:
         description: 'My input parameter'
         required: true
-        enable: true
+        enable: false
 
 jobs:
   my_job:
