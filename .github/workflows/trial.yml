@@ -3,10 +3,13 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      enable:
-        description: 'Enable workflow'
-        type : boolean
+      enable1:
+        description: 'Enable workflow1'
         default: 'true'
+        required: false
+      enable2:
+        description: 'Enable workflow2'
+        default: ${{ github.event.inputs.enable1}}
         required: false
 
 jobs:
@@ -14,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run if workflow is enabled
-        if: ${{ github.event.inputs.enable == 'true' }}
-        run: echo "enabled"   
+        if: ${{ github.event.inputs.enable2 == 'true' }}
+        run: echo ${{ github.event.inputs.enable2}}   
       - name: Run if workflow is disabled
-        if: ${{ github.event.inputs.enable == 'false' }}
-        run: echo "disabled"
+        if: ${{ github.event.inputs.enable2 == 'false' }}
+        run: echo ${{ github.event.inputs.enable2}}  
