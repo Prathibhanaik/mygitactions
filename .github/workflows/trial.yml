@@ -19,7 +19,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: My Step
-        run: echo 'Hello, world!'
+        run: echo "Param2 Value ${{ github.event.inputs.param2 }}"
 
 
 
