@@ -3,13 +3,13 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      enable1:
+      enable1: 
         description: 'Enable workflow1'
-        default: 'true'
+        default: 'disable'
         required: false
       enable2:
         description: 'Enable workflow2'
-        default: ${{ github.event.inputs.enable1}}
+        default: 'disable'
         required: false
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Run if workflow is enabled
         if: ${{ github.event.inputs.enable2 == 'true' }}
-        run: echo ${{ github.event.inputs.enable2}}   
+        run: echo ""   
       - name: Run if workflow is disabled
         if: ${{ github.event.inputs.enable2 == 'false' }}
-        run: echo ${{ github.event.inputs.enable2}}  
+        run: echo ""
