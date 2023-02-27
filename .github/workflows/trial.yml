@@ -1,23 +1,17 @@
 name: trial
 
-
-on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'The environment to deploy to'
-        required: true
-      tag:
-        description: 'The tag to use for the deployment'
-        required: false
+on: [push]
 
 jobs:
-  deploy:
+  my_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to environment
-        run: |
-          echo "Deploying to ${{ github.event.inputs.environment }}"
-          if [ -n "${{ github.event.inputs.tag }}" ]; then
-            echo "Using tag ${{ github.event.inputs.tag }}"
-          fi
+    - name: My Action
+      uses: actions/checkout@v2
+      with:
+        input1: "value1"
+        input2: "value2"
+      run: |
+        echo "Input 1 is ${{ inputs.input1 }}"
+        echo "Input 2 is ${{ inputs.input2 }}"
+
