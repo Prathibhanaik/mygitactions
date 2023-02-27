@@ -18,7 +18,6 @@ on:
  
       component1unit1:
         description: '  unit1'
-        type: boolean
         default: false
         required: ${{"inputs.component1 == 'true'"}}
     
