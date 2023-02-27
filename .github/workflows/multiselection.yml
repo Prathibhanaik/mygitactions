@@ -12,9 +12,9 @@ on:
 
  
       component1unit1:
-        description: '  unit1'
+        description: ' - unit1'
         type: boolean
-        default: false
+        default: ${{ github.event.inputs.component1}}
         required: false
     
           
