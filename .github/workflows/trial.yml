@@ -1,26 +1,17 @@
 name: trial
 
-
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'Branch name'
-        required: true
-      parameter:
-        description: 'Parameter name'
-        required: true
+      my-input:
+        description: 'An input parameter for the workflow'
 
 jobs:
-  my_job:
-    strategy:
-      matrix:
-        branch: ${{ github.event.inputs.branch }}
-        parameter: ${{ github.event.inputs.parameter }}
-
+  my-job:
     runs-on: ubuntu-latest
-
+    if: startsWith(github.ref, 'refs/heads/feature/')
     steps:
-      - name: Step 1
-        run: echo "Running ${{ matrix.branch }} branch with ${{ matrix.parameter }} parameter"
+      - name: My Step
+        run: echo ${{ github.event.inputs.my-input }}
+
 
