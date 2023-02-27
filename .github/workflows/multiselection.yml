@@ -24,8 +24,7 @@ jobs:
       steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.inputs.branch }} 
+
         
       - name: Run CTM UNIT1
         if: ${{ github.event.inputs.component1 == 'true'}}
