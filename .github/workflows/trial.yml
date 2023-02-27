@@ -5,6 +5,7 @@ on:
     inputs:
       enable:
         description: 'Enable workflow'
+        type : boolean
         default: 'true'
         required: false
 
@@ -14,8 +15,7 @@ jobs:
     steps:
       - name: Run if workflow is enabled
         if: ${{ github.event.inputs.enable == 'true' }}
-        run: echo ${{ github.event.inputs.enable }}
-      
+        run: echo "enabled"   
       - name: Run if workflow is disabled
         if: ${{ github.event.inputs.enable == 'false' }}
-        run: echo ${{ github.event.inputs.enable }}
+        run: echo "disabled"
