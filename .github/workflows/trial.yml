@@ -3,30 +3,26 @@ name: trial
 
 on:
   workflow_dispatch:
-    inputs:
-      parameter1:
-        description: 'Enter a value for parameter1'
-        required: true
-      parameter2:
-        description: 'Enter a value for parameter2'
-        required: true
+    branches:
+      - main
+      - developer
 
 jobs:
-  my_job:
+  my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1
-        run: echo "This is step 1"
-      - name: Step 2
-        run: echo "This is step 2"
+      - name: Do something
+        run: echo "Hello, world!"
+      - name: Use parameter
+        if: github.ref == 'refs/heads/developer'
+        run: echo "This is a parameter for the developer branch."
+        env:
+          MY_PARAM: developer
+      - name: Use parameter
         if: github.ref == 'refs/heads/main'
+        run: echo "This is a parameter for the main branch."
         env:
-          PARAMETER_3: ${{ github.event.inputs.parameter1 }}
-      - name: Step 3
-        run: echo "This is step 3"
-        if: github.ref == 'refs/heads/feature'
-        env:
-          PARAMETER_4: ${{ github.event.inputs.parameter2 }}
+          MY_PARAM: main
 
 
 
