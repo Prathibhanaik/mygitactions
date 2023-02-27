@@ -1,0 +1,32 @@
+name: Multiselection
+
+on:
+  workflow_dispatch:
+    inputs:
+      
+      component1:
+        description: 'CTM'
+        type: boolean
+        default: false
+        required: false
+
+ 
+      component1unit1:
+        description: '  unit1'
+        type: boolean
+        default: false
+        required: false
+
+  
+jobs:
+    job:
+      runs-on: windows-latest
+      steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch }} 
+        
+      - name: Run CTM UNIT1
+        if: ${{ github.event.inputs.component1 == 'true'}}
+        run: .\CTM\Box.bat     
