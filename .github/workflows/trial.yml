@@ -1,0 +1,15 @@
+name: trial
+
+on:
+  workflow_dispatch:
+    inputs:
+      my-input:
+        description: 'An input parameter for the workflow'
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/heads/feature/')
+    steps:
+      - name: My Step
+        run: echo ${{ github.event.inputs.my-input }}
