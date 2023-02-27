@@ -14,13 +14,14 @@ on:
         type: boolean
         default: false
         required: false
+    disabled: true
  
       component1unit1:
         description: '  unit1'
         type: boolean
         default: false
         required: false
-      disabled: ${{component1 == 'false'}}
+    
           
       component1unit2:
         description: '  unit2'  
