@@ -3,15 +3,19 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      my-input:
-        description: 'An input parameter for the workflow'
+      enable:
+        description: 'Enable workflow'
+        default: 'true'
+        required: false
 
 jobs:
   my-job:
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/heads/feature/')
     steps:
-      - name: My Step
-        run: echo ${{ github.event.inputs.my-input }}
-
-
+      - name: Run if workflow is enabled
+        if: ${{ github.event.inputs.enable == 'true' }}
+        run: echo "Workflow is enabled"
+      
+      - name: Run if workflow is disabled
+        if: ${{ github.event.inputs.enable == 'false' }}
+        run: echo "Workflow is disabled"
