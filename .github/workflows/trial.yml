@@ -1,22 +1,24 @@
 name: trial
 
+
 on:
   workflow_dispatch:
     inputs:
-      enable-feature:
-        description: 'Enable feature'
-        required: true
-      feature-name:
-        description: 'Feature name'
-        required: false
+      myCheckbox:
+        description: 'My Checkbox'
+        default: false
+        required : true
+        type : boolean
+        options: [yes,no]
+        disabled: true
 
 jobs:
-  my-job:
+  myJob:
     runs-on: ubuntu-latest
     steps:
-      - name: Do something
-        if: ${{ github.event.inputs.enable-feature == 'true' }}
-        run: echo "Feature ${{ github.event.inputs.feature-name }} is enabled"
+      - name: My Step
+        run: echo 'Hello, world!'
+
 
 
 
