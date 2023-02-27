@@ -4,25 +4,20 @@ name: trial
 on:
   workflow_dispatch:
     branches:
-      - main
-      - developer
+      - feature
+      
+    inputs:
+      my_input:
+      description: 'My input description'
+      required: true
 
 jobs:
-  my-job:
+  my_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Do something
-        run: echo "Hello, world!"
-      - name: Use parameter
-        if: github.ref == 'refs/heads/developer'
-        run: echo "This is a parameter for the developer branch."
-        env:
-          MY_PARAM: developer
-      - name: Use parameter
-        if: github.ref == 'refs/heads/main'
-        run: echo "This is a parameter for the main branch."
-        env:
-          MY_PARAM: main
+      - name: Print input parameter
+        run: echo "My input value is ${{ inputs.my_input }}"
+
 
 
 
