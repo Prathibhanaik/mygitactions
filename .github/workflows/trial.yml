@@ -14,8 +14,8 @@ jobs:
     steps:
       - name: Run if workflow is enabled
         if: ${{ github.event.inputs.enable == 'true' }}
-        run: echo "Workflow is enabled"
+        run: echo ${{ github.event.inputs.enable }}
       
       - name: Run if workflow is disabled
         if: ${{ github.event.inputs.enable == 'false' }}
-        run: echo "Workflow is disabled"
+        run: echo ${{ github.event.inputs.enable }}
