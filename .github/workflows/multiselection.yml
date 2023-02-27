@@ -20,7 +20,7 @@ on:
         description: '  unit1'
         type: boolean
         default: false
-        required: false
+        required: ${{"inputs.component1 == 'true'"}}
     
           
       component1unit2:
