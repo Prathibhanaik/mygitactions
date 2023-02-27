@@ -3,14 +3,15 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      myCheckbox:
-        description: 'My Checkbox'
-        default: false
-        disabled: true
+      name:
+        description: 'Enter your name'
+        required: true
+      age: null
+
 
 jobs:
   myJob:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: My Step
         run: echo 'Hello, world!'
