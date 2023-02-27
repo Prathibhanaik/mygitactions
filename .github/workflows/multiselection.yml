@@ -15,7 +15,7 @@ on:
         description: ' - unit1'
         type: boolean
         default: ${{github.event.inputs.component1}}
-        required: ${{github.event.inputs.component1}}
+        required: false
     
           
       component1unit2:
