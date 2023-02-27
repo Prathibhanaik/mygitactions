@@ -14,18 +14,18 @@ on:
       component1unit1:
         description: ' - unit1'
         type: boolean
-        default: ${{ github.event.inputs.component1}}
+        default: ${{ github.event.inputs.component1 == 'true'}}
         required: false
     
           
       component1unit2:
-        description: '  unit2'  
+        description: ' - unit2'  
         default: false
         required: false
         type: boolean
         
       component1unit3:
-        description: '  unit3'
+        description: ' - unit3'
         default: false
         required: false
         type: boolean
@@ -37,19 +37,19 @@ on:
         type: boolean
  
       component2unit1:
-        description: '  unit1'
+        description: ' - unit1'
         default: false
         required: false
         type: boolean
         
       component2unit2:
-        description: '  unit2'
+        description: ' - unit2'
         default: false
         required: false
         type: boolean
         
       component2unit3:
-        description: '  unit3'
+        description: ' - unit3'
         default: false
         required: false
         type: boolean
