@@ -1,24 +1,16 @@
 name: trial
 
-
 on:
-  workflow_dispatch:
+  push:
     branches:
-      - main
-      
-    inputs:
-      my_input:
-      description: 'My input description'
-      required: true
+      - feature/*
 
 jobs:
-  my_job:
-    runs-on: ubuntu-latest
+  my-job:
+    runs-on: windows-latest
     steps:
-      - name: Print input parameter
-        run: echo "My input value is ${{ inputs.my_input }}"
-
-
-
-
-
+      - name: My Step
+        env:
+          MY_PARAMETER: ${{ github.ref }}
+        run: |
+          echo "My parameter is $MY_PARAMETER"
