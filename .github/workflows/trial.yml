@@ -10,7 +10,7 @@ on:
       param2:
         description: 'Parameter 2'
         required: true
-        default: ${{ github.event.inputs.param1 }}-suffix
+        default: ${{ inputs.param1 }}
 
 
 
