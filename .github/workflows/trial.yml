@@ -3,22 +3,14 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      enable1: 
-        description: 'Enable workflow1'
-        default: 'disable'
-        required: false
-      enable2:
-        description: 'Enable workflow2'
-        default: 'disable'
-        required: false
+      my_input:
+        description: 'My input parameter'
+        required: true
+        enable: true
 
 jobs:
-  my-job:
-    runs-on: ubuntu-latest
+  my_job:
+    runs-on: windows-latest
     steps:
-      - name: Run if workflow is enabled
-        if: ${{ github.event.inputs.enable2 == 'true' }}
-        run: echo ""   
-      - name: Run if workflow is disabled
-        if: ${{ github.event.inputs.enable2 == 'false' }}
-        run: echo ""
+      - name: Print input parameter value
+        run: echo "The value of my_input is ${{ github.event.inputs.my_input }}"
