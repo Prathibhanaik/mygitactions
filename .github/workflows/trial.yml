@@ -24,7 +24,7 @@ jobs:
           PARAMETER_3: ${{ github.event.inputs.parameter1 }}
       - name: Step 3
         run: echo "This is step 3"
-        if: github.ref == 'refs/heads/develop'
+        if: github.ref == 'refs/heads/feature'
         env:
           PARAMETER_4: ${{ github.event.inputs.parameter2 }}
 
