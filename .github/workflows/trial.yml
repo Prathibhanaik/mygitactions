@@ -1,15 +1,11 @@
 name: trial
 
-
 on:
   workflow_dispatch:
     inputs:
       myCheckbox:
         description: 'My Checkbox'
         default: false
-        required : true
-        type : boolean
-        options: [yes,no]
         disabled: true
 
 jobs:
