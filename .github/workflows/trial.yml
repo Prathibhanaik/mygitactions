@@ -1,12 +1,17 @@
 name: trial
 
+
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Enter your name'
+      param1:
+        description: 'Parameter 1'
         required: true
-      age: null
+      param2:
+        description: 'Parameter 2'
+        required: true
+        default: ${{ github.event.inputs.param1 }}-suffix
+
 
 
 jobs:
