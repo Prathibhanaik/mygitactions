@@ -1,16 +1,23 @@
 name: trial
 
+
 on:
   workflow_dispatch:
     inputs:
-      my_input:
-        description: 'My input parameter'
+      environment:
+        description: 'The environment to deploy to'
+        required: true
+      tag:
+        description: 'The tag to use for the deployment'
         required: false
-        enable: false
 
 jobs:
-  my_job:
-    runs-on: windows-latest
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-      - name: Print input parameter value
-        run: echo "The value of my_input is ${{ github.event.inputs.my_input }}"
+      - name: Deploy to environment
+        run: |
+          echo "Deploying to ${{ github.event.inputs.environment }}"
+          if [ -n "${{ github.event.inputs.tag }}" ]; then
+            echo "Using tag ${{ github.event.inputs.tag }}"
+          fi
