@@ -4,7 +4,7 @@ name: trial
 on:
   workflow_dispatch:
     branches:
-      - feature
+      - main
       
     inputs:
       my_input:
