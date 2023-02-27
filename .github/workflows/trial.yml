@@ -1,17 +1,24 @@
 name: trial
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      first_input:
+        description: 'Description for the first input parameter'
+        required: true
+      second_input:
+        description: 'Description for the second input parameter'
+        required: true
+
 
 jobs:
   my_job:
     runs-on: ubuntu-latest
     steps:
-    - name: My Action
-      uses: actions/checkout@v2
+    - name: My Step
+      uses: my-org/my-action@v1
       with:
-        input1: "value1"
-        input2: "value2"
-      run: |
-        echo "Input 1 is ${{ inputs.input1 }}"
-        echo "Input 2 is ${{ inputs.input2 }}"
+        first_input: ${{ github.event.inputs.first_input }}
+        second_input: ${{ if eq(github.event.inputs.first_input, 'option1') }}value1{{ else if eq(github.event.inputs.first_input, 'option2') }}value2{{ else }}default_value{{ end }}
+
 
