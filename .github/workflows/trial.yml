@@ -1,4 +1,4 @@
-name: trial
+name: trial_feature
 
 on:
   workflow_dispatch:
