@@ -1,18 +1,23 @@
 name: trial
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       my_input:
-        description: 'My input parameter'
+        description: 'Enter a value'
         required: true
-        default: ${{ github.event.inputs.my_input == 'true' }}
-        
+        if: github.event.inputs.my_input != 'foo'
+
 jobs:
   my_job:
     runs-on: ubuntu-latest
     steps:
       - name: My Step
-        run: echo "Hello, ${{ github.event.inputs.my_input }}!"
+        run: echo "Hello, World!"
+
+
 
 
