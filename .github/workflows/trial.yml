@@ -3,22 +3,15 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      first_input:
-        description: 'Description for the first input parameter'
+      environment:
+        description: 'Environment to deploy to'
         required: true
-      second_input:
-        description: 'Description for the second input parameter'
-        required: true
-
+        if: github.event.inputs.deploy == 'true'
 
 jobs:
-  my_job:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: My Step
-      uses: my-org/my-action@v1
-      with:
-        first_input: ${{ github.event.inputs.first_input }}
-        second_input: ${{ if eq(github.event.inputs.first_input, 'option1') }}value1{{ else if eq(github.event.inputs.first_input, 'option2') }}value2{{ else }}default_value{{ end }}
-
-
+      - name: Deploy to environment
+        run: |
+          echo "Deploying to ${{ github.event.inputs.environment }}"
