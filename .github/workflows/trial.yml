@@ -6,7 +6,7 @@ on:
       environment:
         description: 'Environment to deploy to'
         required: true
-        if: github.event.inputs.deploy == 'true'
+        if: github.event.inputs.deploy == 'false'
 
 jobs:
   deploy:
