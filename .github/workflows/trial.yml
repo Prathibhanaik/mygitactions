@@ -3,16 +3,16 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      my-input:
-        description: 'Input description'
+      my_input:
+        description: 'My input parameter'
         required: true
-
+        if: ${{ github.event.inputs.my_input == 'value' }}
+        
 jobs:
-  my-job:
+  my_job:
     runs-on: ubuntu-latest
     steps:
       - name: My Step
-        uses: actions/setup-node@v2
-        with:
-          input-name: ${{ github.event.inputs.my-input }}
+        run: echo "Hello, ${{ github.event.inputs.my_input }}!"
+
 
