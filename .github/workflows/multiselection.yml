@@ -13,8 +13,8 @@ on:
  
       component1unit1:
         description: ' - unit1'
-        default: ${{github.event.inputs.component1}}
-        required: false
+        default: false
+        required: ${{github.event.inputs.component1}}
         type: boolean
     
           
