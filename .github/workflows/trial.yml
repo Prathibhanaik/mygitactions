@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: My Step
+        uses: actions/setup-node@v2
         with:
           input-name: ${{ github.event.inputs.my-input }}
         run: |
