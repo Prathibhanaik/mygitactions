@@ -3,14 +3,16 @@ name: trial
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Environment to deploy to'
-        required: ${{github.event.inputs.conditional  == 'false'}}
+      my-input:
+        description: 'Input description'
+        required: true
 
 jobs:
-  deploy:
+  my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to environment
+      - name: My Step
+        with:
+          input-name: ${{ github.event.inputs.my-input }}
         run: |
-          echo "Deploying to ${{ github.event.inputs.environment }}"
+          echo "Deploying to ${{ input-name }}"
