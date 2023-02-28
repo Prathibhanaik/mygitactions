@@ -6,7 +6,7 @@ on:
       my_input:
         description: 'My input parameter'
         required: true
-        if: ${{ github.event.inputs.my_input == 'value' }}
+        default: ${{ github.event.inputs.my_input == 'true' }}
         
 jobs:
   my_job:
