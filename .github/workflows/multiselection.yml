@@ -6,8 +6,8 @@ on:
       
       component1:
         description: 'CTM'
-        default: false
-        required: false
+        default: true
+        required: true
         type: boolean
 
  
